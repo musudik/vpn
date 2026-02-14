@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venkkat Prannit Nissankara | Community Leader & Cultural Catalyst</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-secondary: #111111;
+      --fg: #fafafa;
+      --muted: #888888;
+      --accent: #d4a853;
+      --accent-glow: rgba(212, 168, 83, 0.3);
+      --card: #161616;
+      --border: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Animated background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #8b4513 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      animation-delay: -10s;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #b8860b 0%, transparent 70%);
+      top: 50%;
+      left: 30%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 10px) scale(1.02); }
+    }
+
+    /* Noise overlay */
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Timeline styles */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--border) 5%, var(--border) 95%, transparent);
+    }
+
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 24px;
+      }
+    }
+
+    .timeline-item {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateX(-50%) scale(1.3);
+    }
+
+    @media (max-width: 768px) {
+      .timeline-dot {
+        left: 24px;
+      }
+    }
+
+    /* Card hover effects */
+    .event-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 60px var(--accent-glow);
+    }
+
+    .event-card:hover .card-image {
+      transform: scale(1.05);
+    }
+
+    .card-image {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Year marker */
+    .year-marker {
+      background: linear-gradient(135deg, var(--accent), #8b6914);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Stats counter */
+    .stat-number {
+      background: linear-gradient(180deg, var(--fg) 0%, var(--muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Image placeholder */
+    .image-placeholder {
+      background: linear-gradient(135deg, var(--card) 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-placeholder svg {
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    .event-card:hover .image-placeholder svg {
+      opacity: 0.5;
+    }
+
+    /* Nav styles */
+    nav {
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 10, 0.8);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Button styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #8b6914 100%);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+
+    /* Focus states */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+    
+/* Photo Scatter Styles */
+.photo-scatter {
+  opacity: 0; 
+  animation: scatterIn 0.8s ease forwards;
+}
+
+.timeline-item.visible .photo-scatter:nth-child(1) { animation-delay: 0.3s; }
+.timeline-item.visible .photo-scatter:nth-child(2) { animation-delay: 0.5s; }
+.timeline-item.visible .photo-scatter:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes scatterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    /* The specific transform (rotate) is handled by the utility classes on the element */
+    transform: translateY(0); 
+  }
+}
+
+/* Override hover transform to preserve rotation if needed, or reset to 0 as defined in utility */
+.photo-scatter:hover {
+  transform: translateY(-5px) scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Mini Gallery Styles */
+.mini-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.mini-gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mini-gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(212, 168, 83, 0.4);
+}
+
+.mini-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lightbox Styles */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: var(--bg);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-nav:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: 2rem;
+}
+
+.lightbox-next {
+  right: 2rem;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--fg);
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   EXPANDABLE ACCORDION TIMELINE
+   ============================================ */
+.accordion-timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+.accordion-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--border) 5%, var(--border) 95%, transparent);
+}
+@media (max-width: 768px) {
+  .accordion-timeline { padding-left: 2rem; }
+  .accordion-timeline::before { left: 0.5rem; }
+}
+
+/* Year Section */
+.year-section {
+  position: relative;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.year-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.year-section:nth-child(1) { transition-delay: 0s; }
+.year-section:nth-child(2) { transition-delay: 0.06s; }
+.year-section:nth-child(3) { transition-delay: 0.12s; }
+.year-section:nth-child(4) { transition-delay: 0.18s; }
+.year-section:nth-child(5) { transition-delay: 0.24s; }
+.year-section:nth-child(6) { transition-delay: 0.3s; }
+.year-section:nth-child(7) { transition-delay: 0.36s; }
+.year-section:nth-child(8) { transition-delay: 0.42s; }
+.year-section:nth-child(9) { transition-delay: 0.48s; }
+.year-section:nth-child(10) { transition-delay: 0.54s; }
+.year-section:nth-child(11) { transition-delay: 0.6s; }
+
+/* Timeline dot */
+.year-section::before {
+  content: '';
+  position: absolute;
+  left: -2.35rem;
+  top: 1.4rem;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  .year-section::before {
+    left: -1.6rem;
+    width: 12px;
+    height: 12px;
+  }
+}
+.year-section:hover::before,
+.year-section.yr-active::before {
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: scale(1.3);
+}
+
+/* Year Trigger */
+.year-trigger {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.year-trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-glow), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.year-trigger:hover::before,
+.year-trigger.active::before { opacity: 1; }
+.year-trigger:hover,
+.year-trigger.active {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(212, 168, 83, 0.15);
+}
+.year-number-badge {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 5rem;
+  position: relative;
+  z-index: 1;
+}
+.year-info {
+  flex: 1;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+.year-title-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--fg);
+}
+.year-event-count {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.year-chevron {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(212, 168, 83, 0.1);
+  color: var(--accent);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.year-trigger.active .year-chevron {
+  transform: rotate(180deg);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Year Panel */
+.year-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.year-panel.open { grid-template-rows: 1fr; }
+.year-panel-inner { overflow: hidden; }
+.year-events-list {
+  padding: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Event Card */
+.event-accordion {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.event-accordion:hover { border-color: rgba(212, 168, 83, 0.3); }
+.event-accordion.evt-open { border-color: var(--accent); }
+.event-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.event-trigger:hover { background: rgba(212, 168, 83, 0.05); }
+.event-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.event-dot.sports { background: #22c55e; }
+.event-dot.cultural { background: #a855f7; }
+.event-dot.charity { background: #f43f5e; }
+.event-dot.concert { background: #3b82f6; }
+.event-dot.fitness { background: #f97316; }
+.event-dot.community { background: #06b6d4; }
+.event-dot.food { background: #eab308; }
+.event-dot.festival { background: #ec4899; }
+.event-dot.service { background: #14b8a6; }
+.event-dot.spiritual { background: #8b5cf6; }
+.event-name {
+  flex: 1;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--fg);
+}
+.event-badge {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(212, 168, 83, 0.1);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.event-mini-chevron {
+  color: var(--muted);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+}
+.event-accordion.evt-open .event-mini-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* Event Panel */
+.event-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.event-accordion.evt-open .event-panel { grid-template-rows: 1fr; }
+.event-panel-inner { overflow: hidden; }
+.event-content {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.event-description {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+.event-highlights {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(212, 168, 83, 0.05);
+  border: 1px solid rgba(212, 168, 83, 0.1);
+  border-radius: 0.5rem;
+}
+.event-highlights ul { list-style: none; padding: 0; margin: 0; }
+.event-highlights li {
+  padding: 0.25rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.event-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* Event Gallery */
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+@media (max-width: 640px) {
+  .event-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+.gallery-thumb {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: scale(0.9) translateY(10px);
+  animation: thumbReveal 0.5s ease forwards;
+}
+.gallery-thumb:nth-child(1) { animation-delay: 0.05s; }
+.gallery-thumb:nth-child(2) { animation-delay: 0.1s; }
+.gallery-thumb:nth-child(3) { animation-delay: 0.15s; }
+.gallery-thumb:nth-child(4) { animation-delay: 0.2s; }
+.gallery-thumb:nth-child(5) { animation-delay: 0.25s; }
+.gallery-thumb:nth-child(6) { animation-delay: 0.3s; }
+.gallery-thumb:nth-child(7) { animation-delay: 0.35s; }
+.gallery-thumb:nth-child(8) { animation-delay: 0.4s; }
+.gallery-thumb:nth-child(9) { animation-delay: 0.45s; }
+.gallery-thumb:nth-child(10) { animation-delay: 0.5s; }
+@keyframes thumbReveal {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-thumb:hover img { transform: scale(1.12); }
+.gallery-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-thumb:hover::after { opacity: 1; }
+.gallery-thumb .thumb-zoom {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.4rem;
+  width: 26px;
+  height: 26px;
+  background: rgba(212, 168, 83, 0.9);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.gallery-thumb:hover .thumb-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+.no-images-msg {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  border: 1px dashed var(--border);
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Lightbox counter */
+.lightbox-counter {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--fg);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+/* Confetti */
+@keyframes confettiBurst {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(80px) rotate(720deg) scale(0.3); opacity: 0; }
+}
+.confetti-bit {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9000;
+  animation: confettiBurst 1.2s ease-out forwards;
+}
+
+/* Pulse for active timeline dot */
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.year-section.yr-active::before {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .year-trigger { padding: 1rem; gap: 0.75rem; }
+  .year-number-badge { font-size: 1.5rem; min-width: 3.5rem; }
+  .year-title-text { font-size: 1rem; }
+  .event-trigger { padding: 0.85rem 1rem; gap: 0.5rem; }
+  .event-name { font-size: 0.85rem; }
+  .event-badge { display: none; }
+  .event-content { padding: 0 1rem 1rem; }
+  .event-description { font-size: 0.85rem; }
+  .lightbox-nav { width: 36px; height: 36px; font-size: 1rem; }
+  .lightbox-prev { left: 0.75rem; }
+  .lightbox-next { right: 0.75rem; }
+  .lightbox-close { top: 1rem; right: 1rem; width: 36px; height: 36px; font-size: 1.2rem; }
+}
+
+/* ============================================
+   FILM STRIP
+   ============================================ */
+.filmstrip-wrapper {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeSlideUp 1.2s ease forwards 0.1s;
+}
+.filmstrip {
+  --strip-h: 120px;
+  position: relative;
+  height: calc(var(--strip-h) + 20px);
+  background: #0d0d0d;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  overflow: hidden;
+}
+/* Sprocket holes */
+.filmstrip::before,
+.filmstrip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+.filmstrip::before {
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0px,
+      transparent 194px,
+      rgba(40,40,40,0.8) 194px,
+      rgba(40,40,40,0.8) 196px
+    );
+}
+.sprocket-row {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 10px;
+  z-index: 4;
+  display: flex;
+  gap: 0;
+  animation: filmScroll var(--film-speed, 60s) linear infinite;
+}
+.sprocket-row.top { top: 0; }
+.sprocket-row.bottom { bottom: 0; }
+.sprocket-hole {
+  width: 14px;
+  height: 8px;
+  margin: 1px 9px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: 1px solid #252525;
+}
+/* Film edge gradient */
+.filmstrip-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 5;
+  pointer-events: none;
+}
+.filmstrip-edge.left {
+  left: 0;
+  background: linear-gradient(90deg, #0a0a0a 0%, transparent 100%);
+}
+.filmstrip-edge.right {
+  right: 0;
+  background: linear-gradient(270deg, #0a0a0a 0%, transparent 100%);
+}
+/* Track */
+.filmstrip-track {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: var(--strip-h);
+  animation: filmScroll var(--film-speed, 60s) linear infinite;
+  will-change: transform;
+}
+.filmstrip-track:hover {
+  animation-play-state: paused;
+}
+@keyframes filmScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Frame */
+.film-frame {
+  position: relative;
+  width: 196px;
+  height: var(--strip-h);
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border-left: 1px solid rgba(40,40,40,0.6);
+  border-right: 1px solid rgba(40,40,40,0.6);
+}
+.film-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.15) contrast(1.1) brightness(0.85);
+  transition: all 0.5s ease;
+}
+.film-frame:hover img {
+  filter: sepia(0) contrast(1) brightness(1);
+  transform: scale(1.05);
+}
+/* Caption overlay */
+.film-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 8px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.film-caption-title {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.film-caption-year {
+  font-size: 0.5rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+/* Film grain overlay */
+.film-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+/* Light leak */
+.film-light-leak {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(105deg, rgba(212,168,83,0.08) 0%, transparent 30%, transparent 70%, rgba(212,168,83,0.05) 100%);
+  animation: lightLeak 8s ease-in-out infinite alternate;
+}
+@keyframes lightLeak {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+/* Film counter */
+.film-counter {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  font-size: 0.5rem;
+  color: rgba(212,168,83,0.3);
+  font-family: 'Courier New', monospace;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.film-frame:hover .film-counter {
+  opacity: 1;
+}
+/* Flicker effect on hover */
+@keyframes filmFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+  75% { opacity: 0.99; }
+}
+.film-frame:hover {
+  animation: filmFlicker 0.15s ease 2;
+}
+@media (max-width: 768px) {
+  .filmstrip-wrapper { top: 3.5rem; }
+  .filmstrip { --strip-h: 65px; }
+  .film-frame { width: 110px; }
+  .film-caption { padding: 4px 6px; }
+  .film-caption-title { font-size: 0.45rem; }
+  .film-caption-year { font-size: 0.4rem; }
+  .sprocket-hole { width: 8px; height: 5px; margin: 1px 5px; }
+  .sprocket-row { height: 7px; }
+  .filmstrip-edge { width: 40px; }
+  .hero-content-push { padding-top: 6.5rem !important; }
+}
+@media (max-width: 480px) {
+  .filmstrip { --strip-h: 55px; }
+  .film-frame { width: 95px; }
+  .film-caption-title { font-size: 0.4rem; }
+  .hero-content-push { padding-top: 5.5rem !important; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-display text-xl font-semibold tracking-tight">
+        VPN<span class="text-[var(--accent)]">.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">About</a>
+        <a href="#journey" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">Journey</a>
+        <a href="#impact" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">Impact</a>
+        <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-sm font-medium text-black">Connect</a>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-[var(--bg)] z-40 hidden flex-col items-center justify-center gap-8">
+    <a href="#about" class="text-2xl font-display" onclick="closeMobileMenu()">About</a>
+    <a href="#journey" class="text-2xl font-display" onclick="closeMobileMenu()">Journey</a>
+    <a href="#impact" class="text-2xl font-display" onclick="closeMobileMenu()">Impact</a>
+    <a href="#contact" class="btn-primary px-8 py-3 rounded-full font-medium text-black" onclick="closeMobileMenu()">Connect</a>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="hero-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Film Strip -->
+    <div class="filmstrip-wrapper">
+      <div class="filmstrip" id="filmstrip">
+        <div class="sprocket-row top" id="sprockets-top"></div>
+        <div class="filmstrip-track" id="filmstrip-track">
+          <!-- Populated by JS -->
+        </div>
+        <div class="sprocket-row bottom" id="sprockets-bottom"></div>
+        <div class="film-grain"></div>
+        <div class="film-light-leak"></div>
+        <div class="filmstrip-edge left"></div>
+        <div class="filmstrip-edge right"></div>
+      </div>
+    </div>
+
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto hero-content-push" style="padding-top: 10rem;">
+      <p class="text-[var(--accent)] text-sm tracking-[0.3em] uppercase mb-6 opacity-0 animate-fade-in" style="animation: fadeSlideUp 1s ease forwards 0.2s;">
+        Community Leader & Cultural Catalyst
+      </p>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] mb-8 opacity-0" style="animation: fadeSlideUp 1s ease forwards 0.4s;">
+        Venkkat Prannit<br>
+        <span class="year-marker">Nissankara</span>
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--muted)] max-w-2xl mx-auto mb-12 opacity-0" style="animation: fadeSlideUp 1s ease forwards 0.6s;">
+        Unifying the Indian diaspora across Europe through cultural diplomacy, 
+        social integration, and community-driven initiatives spanning 23 countries.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0" style="animation: fadeSlideUp 1s ease forwards 0.8s;">
+        <a href="#journey" class="btn-primary px-8 py-4 rounded-full font-medium text-black">
+          Explore the Journey
+        </a>
+        <a href="#about" class="px-8 py-4 rounded-full font-medium border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+      <svg class="w-6 h-6 text-[var(--muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- Stats Section -->
+  <section class="py-24 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div class="text-center">
+          <p class="stat-number font-display text-5xl md:text-6xl font-medium">150+</p>
+          <p class="text-[var(--muted)] text-sm mt-2">Sports Tournaments</p>
+        </div>
+        <div class="text-center">
+          <p class="stat-number font-display text-5xl md:text-6xl font-medium">23</p>
+          <p class="text-[var(--muted)] text-sm mt-2">European Countries</p>
+        </div>
+        <div class="text-center">
+          <p class="stat-number font-display text-5xl md:text-6xl font-medium">70+</p>
+          <p class="text-[var(--muted)] text-sm mt-2">Partner Organizations</p>
+        </div>
+        <div class="text-center">
+          <p class="stat-number font-display text-5xl md:text-6xl font-medium">18</p>
+          <p class="text-[var(--muted)] text-sm mt-2">Years of Impact</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-32 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-[var(--accent)] text-sm tracking-[0.2em] uppercase mb-4">About</p>
+          <h2 class="font-display text-4xl md:text-5xl font-medium mb-8 leading-tight">
+            Building Bridges Across Continents
+          </h2>
+          <div class="space-y-6 text-[var(--muted)]">
+            <p>
+              Venkkat Prannit Nissankara is a Munich-based community leader and entrepreneur 
+              with extensive experience in cultural diplomacy, social integration, and public engagement. 
+              As the founder of IndoEuropean.eu, he has built one of the largest networking platforms 
+              for Indians living in Europe.
+            </p>
+            <p>
+              Guided by the philosophy of <em class="text-white">Vasudeva Kutumbakam</em> 
+              (The World is One Family), his work bridges geographical gaps and fosters a deep 
+              sense of belonging among non-resident Indians across the continent.
+            </p>
+            <p>
+              At just 28, he became the Founder President of the Mana Telugu Association, 
+              successfully consolidating Telugu community platforms throughout Germany. 
+              His contributions were recognized with the prestigious Under-40 Award at the 
+              Belgian Parliament.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/5] rounded-2xl overflow-hidden border border-[var(--border)]">
+            <img src="Pranith.jpg" alt="Venkkat Prannit Nissankara" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-[var(--card)] border border-[var(--border)] rounded-xl p-6 max-w-xs">
+            <p class="text-sm text-[var(--muted)]">"Founder INDOEUROPEAN.EU"</p>
+            <p class="font-display text-lg mt-2">Venkkat Prannit Nissankara</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Timeline Section -->
+  <section id="journey" class="py-32 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-[var(--accent)] text-sm tracking-[0.2em] uppercase mb-4">Timeline</p>
+        <h2 class="font-display text-4xl md:text-5xl font-medium">A Journey of Impact</h2>
+        <p class="text-[var(--muted)] mt-4 max-w-xl mx-auto">
+          From grassroots initiatives to pan-European platforms &mdash; tap any year to explore events, photos, and milestones.
+        </p>
+      </div>
+      <div class="accordion-timeline" id="timeline-accordion">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section id="impact" class="py-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <p class="text-[var(--accent)] text-sm tracking-[0.2em] uppercase mb-4">Impact</p>
+        <h2 class="font-display text-4xl md:text-5xl font-medium">Key Focus Areas</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Cultural Diplomacy</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Promoting Indian culture, festivals, and heritage across Europe through 
+            large-scale community events and celebrations.
+          </p>
+        </div>
+
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Professional Support</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Supporting students, professionals, and job seekers with resources, 
+            networking opportunities, and career guidance.
+          </p>
+        </div>
+
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Sports Development</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Organizing 150+ tournaments promoting unity through cricket, football, 
+            volleyball, and athletics across Europe.
+          </p>
+        </div>
+
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Humanitarian Aid</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Coordinating relief during crises including Ukraine war, assisting Indian 
+            students and families through consulate partnerships.
+          </p>
+        </div>
+
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Spiritual Heritage</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Leading TTD Kalyanam events across 15 European nations, promoting Ayurveda 
+            and yoga through digital outreach.
+          </p>
+        </div>
+
+        <div class="event-card bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-full bg-[var(--accent)]/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-medium mb-3">Recognition</h3>
+          <p class="text-[var(--muted)] text-sm">
+            Recipient of the Under-40 Award at Belgian Parliament for strengthening 
+            Indo-European ties and community building.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-32 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-[var(--accent)] text-sm tracking-[0.2em] uppercase mb-4">Connect</p>
+      <h2 class="font-display text-4xl md:text-5xl font-medium mb-8">Let's Build Together</h2>
+      <p class="text-[var(--muted)] mb-12 max-w-xl mx-auto">
+        Interested in collaborating on community initiatives, cultural events, or 
+        partnership opportunities across Europe.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://indoeuropean.eu" target="_blank" rel="noopener noreferrer" 
+           class="btn-primary px-8 py-4 rounded-full font-medium text-black inline-flex items-center gap-2">
+          Visit IndoEuropean.eu
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span class="font-display text-lg">Venkkat Prannit Nissankara</span>
+        </div>
+        <p class="text-sm text-[var(--muted)]">
+          Vasudeva Kutumbakam - The World is One Family
+        </p>
+        <p class="text-sm text-[var(--muted)]">
+          Munich, Germany
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-close" onclick="closeLightbox(event)">×</div>
+    <div class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">‹</div>
+    <div class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">›</div>
+    <img id="lightbox-img" src="" alt="Enlarged view">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script>
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    function openMobileMenu() {
+      menuOpen = true;
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', function() {
+        menuOpen ? closeMobileMenu() : openMobileMenu();
+      });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          closeMobileMenu();
+        }
+      });
+    });
+
+    // Fade-in keyframes
+    (function() {
+      var s = document.createElement('style');
+      s.textContent = '@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }';
+      document.head.appendChild(s);
+    })();
+
+    // Parallax orbs
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      document.addEventListener('mousemove', function(e) {
+        var orbs = document.querySelectorAll('.gradient-orb');
+        var x = (e.clientX / window.innerWidth - 0.5) * 20;
+        var y = (e.clientY / window.innerHeight - 0.5) * 20;
+        orbs.forEach(function(orb, i) {
+          var f = (i + 1) * 0.5;
+          orb.style.transform = 'translate(' + (x * f) + 'px, ' + (y * f) + 'px)';
+        });
+      });
+    }
+
+    // Nav scroll effect
+    var navEl = document.querySelector('nav');
+    window.addEventListener('scroll', function() {
+      navEl.style.background = window.scrollY > 50 ? 'rgba(10, 10, 10, 0.95)' : 'rgba(10, 10, 10, 0.8)';
+    });
+
+    // ============================================
+    // EVENT DATA
+    // ============================================
+    var eventData = {
+      '2013': {
+        title: 'The Beginning',
+        events: [
+          {
+            name: 'India Sports Day',
+            category: 'sports',
+            description: 'Munich witnessed a historic cultural milestone with the inauguration of the first India Sports Day. This multi-day festival, spanning two vibrant weekends in July and August, served as a landmark gathering for the Indian diaspora and sports enthusiasts across the city. The games were more than a series of matches \u2014 they acted as a bridge for the Indian community in Munich to showcase their sporting talent while strengthening social bonds. By spreading the festival across two weekends, organizers created a sustained atmosphere of excitement that laid the groundwork for future Indian sporting traditions in Germany.',
+            folder: '2013/INDIA SPORTS DAY',
+            images: ['1.jpeg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+            highlights: []
+          }
+        ]
+      },
+      '2015': {
+        title: 'Cultural Milestones',
+        events: [
+          {
+            name: 'Cancer Fund-Raiser Charity',
+            category: 'charity',
+            description: 'On September 13, 2015, Munich hosted a historic philanthropic event: the first-ever Cancer Fund-Raiser Charity Show in Europe. Organized by IndoEuropean.eu at the Sarah Palast in Ottobrunn, the event was dedicated to supporting cancer patients in India through the Basavatarakam Indo American Cancer Hospital & Research Institute. The highlight was the presence of Telugu cinema legend Shree Nandamuri Balakrishna. The event successfully brought together Telugu communities from the Netherlands, Denmark, Sweden, and Austria.',
+            folder: '2015/Cancer Fund-Raiser Charity',
+            images: ['1.jpeg'],
+            highlights: ['First-ever Cancer Fund-Raiser in Europe', 'Guest: Shree Nandamuri Balakrishna', 'Communities from Netherlands, Denmark, Sweden, Austria']
+          },
+          {
+            name: 'Namaste India',
+            category: 'cultural',
+            description: 'Munich hosted a premier cultural event titled "Namaste India," an exclusive showcase of Indian classical dance. Held at Gut Nederling in collaboration with the Consulate General of India, Munich, the show featured a performance by acclaimed Kuchipudi dancer Dr. Padmaja Reddy, a Padma Shri recipient. The show offered a rare comprehensive look at India\u2019s diverse dance heritage featuring seven classical styles: Kuchipudi, Manipuri, Mohiniyattam, Odissi, Kathakali, Kathak, and Bharatanatyam.',
+            folder: '2015/Namaste India',
+            images: ['3.jpg', '2.jpg', 'NamastheIndia.jpeg'],
+            highlights: ['7 classical dance forms showcased', 'Dr. Padmaja Reddy (Padma Shri)', 'Collaboration with CGI Munich']
+          },
+          {
+            name: 'Indian Sports Day',
+            category: 'sports',
+            description: 'The multi-day festival took place across two weekends in July and August. A community sports festival supported by the Consulate General of India, Munich, and organized by Indo-european.eu. Sports included Cricket (Men\u2019s, Women\u2019s, and Kids\u2019 Athletics), Volleyball (Men), and Throw Ball (Women). Live streaming was available.',
+            folder: '2015/INDIAN SPORTS DAY',
+            images: ['1.jpg', '4.jpg', '5.jpg'],
+            highlights: []
+          }
+        ]
+      },
+      '2016': {
+        title: 'Independence Day Celebrations',
+        events: [
+          {
+            name: 'Independence Day Cup 2016',
+            category: 'sports',
+            description: 'The Independence Day Cup Munich 2016 was a vibrant multi-sport and cultural festival celebrating India\u2019s 70th Independence Day. Organized by Indoeuropean.eu with Mana Telugu Association (MATA) Germany, the event took place across two summer weekends: July 30\u201331 and August 6\u20137. Beyond sports, the event featured an Opening Ceremony, live karaoke by Noopur Singh, and dance show by Pavan from D4Dance Germany. Supported by CGI Munich.',
+            folder: '2016/Independence Day Cup 2016',
+            images: ['1.jpg'],
+            highlights: ['Celebrating India\u2019s 70th Independence Day', 'Cricket, Volleyball, Netball, Athletics', 'Cultural performances & karaoke', 'Organized with MATA Germany']
+          }
+        ]
+      },
+      '2018': {
+        title: 'India Sports Day',
+        events: [
+          {
+            name: 'India Sports Day',
+            category: 'sports',
+            description: 'A multi-day community sports festival supported by the Consulate General of India, Munich, organized by Indo-european.eu. The event spanned two weekends in July and August (July 28\u201329 & August 4\u20135). Sports included Cricket (Men\u2019s, Women\u2019s, and Kids\u2019), Volleyball (Men), and Throw Ball (Women). Live streaming was available for global audiences.',
+            folder: '2018/INDIA SPORTS DAY',
+            images: ['IndiaSportsDay1.jpeg', '1.jpg', 'AnnualSportsDay.jpeg', 'IndiaSportsDay.jpeg'],
+            highlights: ['Cricket (Men\u2019s, Women\u2019s, Kids\u2019)', 'Volleyball & Throw Ball', 'Live streaming available', 'Supported by CGI Munich']
+          }
+        ]
+      },
+      '2019': {
+        title: 'Salaam India',
+        events: [
+          {
+            name: 'Salaam India Concert',
+            category: 'concert',
+            description: 'A patriotic celebration in Bollywood style featuring international artists including Biju Nair (Indian Idol finalist) and Rithisha Padmanabh (Voice of India finalist). Directed by Runa Sikdar with live band Bombay Blues from London and special dance performances by Munich-based D4Dance Company. Organized by PJ Events and supported by CGI Munich.',
+            folder: '2019/Salaam India concert',
+            images: ['IndiaCup.jpeg'],
+            highlights: ['Biju Nair (Indian Idol finalist)', 'Rithisha Padmanabh (Voice of India)', 'Live band: Bombay Blues from London', 'D4Dance Company performances']
+          }
+        ]
+      },
+      '2020': {
+        title: 'RD Cup Multi-Sport',
+        events: [
+          {
+            name: 'RD Cup \u2014 Cricket & Badminton',
+            category: 'sports',
+            description: 'The RD Cup 2020 was a major multi-sport community event in Munich, bringing together local sports enthusiasts for competitive cricket and badminton tournaments. The cricket tournament featured 24 Men\u2019s teams and 6 Women\u2019s teams, with over 100 participants competing in badminton.',
+            folder: '2020/RD CUP',
+            images: ['RDCup2020.jpeg', 'Badminton.jpeg'],
+            highlights: ['24 Men\u2019s cricket teams', '6 Women\u2019s cricket teams', '100+ badminton participants']
+          }
+        ]
+      },
+      '2021': {
+        title: 'Walk for India @75',
+        events: [
+          {
+            name: 'Walk for India @75',
+            category: 'fitness',
+            description: 'A global digital initiative launched during the COVID-19 pandemic to commemorate India\u2019s 75th Independence Day (Azadi Ka Amrit Mahotsav). Participants completed 75,000 steps, symbolizing respect for the nation, commitment to health, and unity. Upon completion, they received personalized digital certificates featuring Indian tourism visuals. Supported by the Ministry of Tourism and MEA, organized by indoeuropean.eu.',
+            folder: '2021/WALK FOR INDIA',
+            images: ['WalkForIndia.jpg', 'WFI-1.jpg', 'WFI-2.jpg', 'WhatsApp Image 2026-02-08 at 00.21.34.jpeg'],
+            highlights: ['75,000 steps challenge', 'Personalized digital certificates', 'Ministry of Tourism support', 'Global diaspora participation']
+          }
+        ]
+      },
+      '2022': {
+        title: 'Cricket Expansion',
+        events: [
+          {
+            name: 'Sunrisers Munich Cup',
+            category: 'sports',
+            description: 'Munich\u2019s cricket community hosted the Sunrisers Munich Cup, adapting the high-energy IPL style to local softball cricket. The tournament was a dedicated initiative for amateur and emerging players who don\u2019t regularly participate in hardball leagues, lowering the barrier to entry using softball (tennis balls).',
+            folder: '2022/SUNRISERS MUNICH CUP - 2022',
+            images: ['SunrisersCup.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Newbies Cup',
+            category: 'sports',
+            description: 'A dedicated cricket tournament for amateur and emerging players in Munich. By using softball, the tournament allowed newcomers to experience competitive match play in a supportive environment, making cricket accessible to all.',
+            folder: '2022/Newbiescup',
+            images: ['NewbiescupPoster.jpg', 'Newbiescup.jpg', 'YouthCup2.jpg'],
+            highlights: []
+          },
+          {
+            name: 'India Cup (1st Edition)',
+            category: 'sports',
+            description: 'Held on September 17, 2022, at Cricket Club of Bayern (CCB) ground, the India Cup introduced a "Delhi Tadka" IPL-style format to Munich. Featured 6 assorted men\u2019s teams and a special women\u2019s match. Teams were uniquely named after India\u2019s sacred rivers \u2014 Kaveri, Ganga, Krishna, Narmada, Yamuna, and Brahmaputra. Community vibe with Indian food, drinks, and exciting prizes.',
+            folder: '2022/INDIA CUP',
+            images: ['0. IDC-Logo.jpeg', '1. Event.jpeg', '1.jpg', '2.jpg', '3.jpg', '3jpg.jpg', 'IDCTeams.jpeg', 'P_20220914_203218.jpg'],
+            highlights: ['IPL-style "Delhi Tadka" format', 'Teams named after sacred rivers', 'Special women\u2019s match', 'Community food & prizes']
+          }
+        ]
+      },
+      '2023': {
+        title: 'Year of Celebrations',
+        events: [
+          {
+            name: 'Bhogi',
+            category: 'festival',
+            description: 'Munich\u2019s Indian community celebrated Bhogi with a focus on heritage. The festivities featured traditional foods and community gatherings, emphasizing sustainable grains and cultural unity within the diaspora during the harvest season.',
+            folder: '2023/BHOGI',
+            images: ['Pongal_2023_1.jpg', 'Pongal_2023_Poster.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Bharat Cup (11th Edition)',
+            category: 'sports',
+            description: 'The Bharat Cup cricket tournament, part of the International Year of Millets 2023. Men\u2019s tournament on August 19\u201320, featuring teams grouped under themes of India\u2019s Union Territories: Andaman & Nicobar, Delhi, Chandigarh, Jammu & Kashmir, Daman & Diu, Ladakh, Lakshadweep, and Puducherry. A separate women\u2019s tournament was also organized.',
+            folder: '2023/BHARAT CUP',
+            images: ['BharatCup1.jpg', 'BharatCupGroups.jpg', 'ICV_Coverjpg.jpg', 'IC_VB_2.jpg', 'IndiaCup2023_Volleyball1.jpg'],
+            highlights: ['International Year of Millets theme', 'Teams named after Union Territories', 'Men\u2019s and Women\u2019s tournaments']
+          },
+          {
+            name: 'India Cup (2nd Edition)',
+            category: 'sports',
+            description: 'Multi-day sports event held September 9\u201310 as part of the International Year of Millets 2023 celebrations. The tournament named teams after significant ISRO missions: Chandrayaan, Mangalyaan, Shukrayaan, Gaganyaan, Astrosat, and Aditya \u2014 celebrating India\u2019s space achievements.',
+            folder: '2023/INDIA CUP',
+            images: ['banner.jpg', 'IDC_Poster.jpg', 'IndiaCup_2ndEd.jpg', 'IndiaCup_2ndEd_Poster.jpg', 'IndiaCup2023_Volleyball.jpg', 'ICV1jpg.jpg', 'WhatsApp Image 2026-02-08 at 00.21.28.jpeg'],
+            highlights: ['ISRO missions themed teams', 'Chandrayaan, Mangalyaan, Gaganyaan', 'Cricket + Volleyball']
+          },
+          {
+            name: 'Punjabi Mela',
+            category: 'cultural',
+            description: 'A vibrant showcase of traditional sports and culture. The event featured high-energy activities including Volleyball and Kusthi (traditional Indian wrestling), alongside folk music and dance. It served as a major community hub promoting physical fitness and Punjabi heritage in the heart of Bavaria.',
+            folder: '2023/PUNJABI MELA',
+            images: ['PunjabiMela.jpg'],
+            highlights: ['Traditional Kusthi wrestling', 'Volleyball tournament', 'Folk music and dance']
+          }
+        ]
+      },
+      '2024': {
+        title: 'Community Festivals',
+        events: [
+          {
+            name: 'Sankranthi Sambaralu',
+            category: 'festival',
+            description: 'The Munich Indian community celebrated Sankranthi Sambaralu with great fervor. The event featured traditional rituals including Bhogi Mantalu (ritual bonfire), Bhogi Pallu for children, and intricate Rangoli (Muggula) competitions.',
+            folder: '2024/SANKRANTHI SAMBARALU',
+            images: ['Sankranthi_224.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Rangoholic \u2014 Holi Blast',
+            category: 'festival',
+            description: 'Rangoholic Holi Blast event presented by LMF Events and ONEMUNICH365, supported by IndoEuropean.eu. A colorful celebration of the festival of colors with vibrant play, music by DJ, and community gathering.',
+            folder: '2024/RANGOHOLIC',
+            images: ['Holi.jpg'],
+            highlights: []
+          },
+          {
+            name: 'South & East Coast Indian Food Festival',
+            category: 'food',
+            description: 'Held on Saturday, June 15, 2024, the festival featured a unique "Indian Railway" theme, transforming the venue at Grasweg 67A into a vibrant transit hub. Over 25 stalls, each representing a different Indian railway station, offered over 100 authentic dishes showcasing India\u2019s southern and eastern coastal regions. Free entry.',
+            folder: '2024/SOUTH & EAST COAST INDIAN FOOD FESTIVAL',
+            images: ['FoodFestival.jpg', 'FoodFestivalMenu.jpg'],
+            highlights: ['Indian Railway theme venue', '25+ stalls, 100+ dishes', 'Southern & Eastern coastal cuisine', 'Free entry for all']
+          },
+          {
+            name: 'Desi Cup',
+            category: 'sports',
+            description: 'An exciting cricket tournament capturing the spirit of competition and community. Bringing together multiple teams from diverse backgrounds, showcasing the rich cultural tapestry and passion for cricket in the region.',
+            folder: '2024/DESI CUP',
+            images: ['DesiCup.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Bavaria Cup',
+            category: 'sports',
+            description: 'A regional cricket tournament bringing together teams from across Bavaria. Showcasing competitive spirit and camaraderie among cricket enthusiasts in the region.',
+            folder: '2024/BAVARIA CUP',
+            images: ['BavariaCup.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Friendship Cup',
+            category: 'sports',
+            description: 'A cricket tournament celebrating friendship and sportsmanship. Teams from diverse backgrounds competed in a spirit of camaraderie and community bonding.',
+            folder: '2024/FRIENDSHIP CUP',
+            images: ['FriendshipCup.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Bharat Cup (12th Edition)',
+            category: 'sports',
+            description: 'The Bharat Cup brought high-energy softball cricket to Munich. Not just cricket action, but also promoted Indian cultural dances and community celebration.',
+            folder: '2024/BHARAT CUP',
+            images: ['BharatCup.jpg', 'BharatCupGroup.jpg', 'BharatCupTrophies.jpg', 'WhatsApp Image 2026-02-08 at 00.21.28 (2).jpeg'],
+            highlights: []
+          },
+          {
+            name: 'India Cup (3rd Edition)',
+            category: 'sports',
+            description: 'The India Cup 3rd Edition brought high-energy cricket to Munich with IPL-style format. The tournament featured thrilling matches alongside cultural performances and community celebrations.',
+            folder: '2024/INDIA CUP',
+            images: ['IDC1.jpg', 'IDCTshirtLaunch1.jpg', 'IDCPresentation.jpg', 'IDCTeam.jpg', 'IDCTrophies.jpg', 'IDCTshirtLaunch.jpg'],
+            highlights: []
+          },
+          {
+            name: 'RD Cup \u2014 Cricket & Volleyball',
+            category: 'sports',
+            description: 'RD Cup Indoor Cricket with 16 teams and over 100 players. RD Cup Beach Volleyball with 16 teams. The tournament honours Sri Pingali Venkayya (architect of the Indian flag) and Savitribai Phule (first Indian female teacher). Presented by ONEMUNICH365 and supported by IndoEuropean.eu.',
+            folder: '2024/RD CUP',
+            images: ['RDCup.jpg', 'RDCupGames.jpg', 'RDCupVolleyball.jpg', 'RDCupVolleyballTrophies.jpg', 'RDCupCricket.jpg'],
+            highlights: ['16 cricket teams, 100+ players', '16 volleyball teams', 'Honours Pingali Venkayya & Savitribai Phule']
+          }
+        ]
+      },
+      '2025': {
+        title: 'Infrastructure & Service',
+        events: [
+          {
+            name: 'Sankranthi Sambaralu',
+            category: 'festival',
+            description: 'IndoEuropean.eu promoted multi-faith cultural events celebrating the diversity of Indian festivals. Events featured traditional activities such as colorful rangoli designs, Bhogi Mantalu (bonfires), traditional attire, and authentic food.',
+            folder: '2025/SANKRANTHI SAMBARALU',
+            images: ['2025.jpg', 'Pongal.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Festival of Togetherness (Lohri)',
+            category: 'festival',
+            description: 'Presented by Vasudhaiva Kutumbakam (VK) in collaboration with CGI Munich. Media & Event Partner: IndoEuropean.eu. The Festival of Togetherness 2025 celebrated various Indian New Year and harvest festivals including Lohri and Makara Sankranti. Numerous Indian cultural associations and leaders from across Bavaria came together to foster community connections beyond traditional boundaries.',
+            folder: '2025/LOHRI',
+            images: ['FOT-2025.jpg', 'CGI.jpeg'],
+            highlights: ['45+ cultural associations', 'Collaboration with CGI Munich', 'Vasudhaiva Kutumbakam vision']
+          },
+          {
+            name: 'Holi Bash',
+            category: 'festival',
+            description: 'Festival of colors events held in multiple cities \u2014 Munich, Stuttgart, and Frankfurt. Featuring open-air areas, safe organic colored powders, Bollywood music and dance performances, food stalls, and DJ sets.',
+            folder: '2025/HOLI BASH',
+            images: ['Holi.jpg', 'Holi2.jpg'],
+            highlights: []
+          },
+          {
+            name: 'Iftiyar (Iftar Party)',
+            category: 'community',
+            description: 'Celebrating the spirit of unity during the Islamic holy month with Iftar gatherings and exhibitions. The platform featured events promoting interfaith harmony and community togetherness.',
+            folder: '2025/IFTIYAR',
+            images: ['Iftyar.jpg'],
+            highlights: []
+          },
+          {
+            name: 'RD Cup \u2014 Volleyball & Throwball',
+            category: 'sports',
+            description: 'Held on Sunday, February 2, 2025, featuring men\u2019s beach volleyball and women\u2019s throwball tournaments. Hosted at the Beach Dome in Munich, organized by indoeuropean.eu and ONEMUNICH365 EVENTS UNITED, as part of Republic Day celebrations.',
+            folder: '2025/RD Cup',
+            images: ['RDCup.jpg', 'VolleyballRDCup.jpg', 'RDCUP2025-VOLLEYBALL-1.png'],
+            highlights: []
+          },
+          {
+            name: 'Indian Community Help Desk',
+            category: 'service',
+            description: 'A bi-weekly community initiative where domain experts within the Indian Diaspora volunteer to address questions concerning accommodation, German schooling, student help, health, emergency guidance (SOS), Germany onboarding, and tax & insurance. The free service launched February 23rd.',
+            folder: '2025/INDIAN COMMUNITY HELP DESK',
+            images: ['Indian Community Help Desk.jpg'],
+            highlights: ['Free bi-weekly service', 'Accommodation & schooling help', 'Health & emergency guidance', 'Tax & insurance support']
+          },
+          {
+            name: 'India Football Centre',
+            category: 'service',
+            description: 'An elite training hub launched in April 2025 in Ingolstadt through a historic collaboration with FC Ingolstadt 04. The center identifies and nurtures football talent from the Indian diaspora (NRIs) with professional coaching and a pathway into European football. Supported by CGI Munich, DFB, and AI services from TCG Digital.',
+            folder: '2025/INDIA FOOTBALL CENTER',
+            images: ['IndiaFootballCenter.jpg', 'IndianFootball.jpg', 'IndiaCup-ViksitBharat.png'],
+            highlights: ['Collaboration with FC Ingolstadt 04', 'AI talent identification by TCG Digital', 'Supported by CGI Munich & DFB', 'Pathway to European football']
+          },
+          {
+            name: 'Vikasit Bharat Run & India Cup (4th Edition)',
+            category: 'fitness',
+            description: 'A vibrant stride for a developed Bharat! The Viksit Bharat Run in Munich brought together runners to celebrate unity, swadeshi, and innovation. India Cup 4th Edition (September 28, CCB Cricket Ground) themed "India\u2019s Scientific & Tech Marvels" featured teams named after historical figures: Aryabhata Attackers, Ayurveda Guardians, Chanakya Strategists, Vedas Visionaries, Arthashastra Riders, and Sushruta Blazers. Included tree plantation drives and pledges for a developed India.',
+            folder: '2025/Vikasit Bharat RUN',
+            images: ['VikasitBharatRun.jpg', 'VikasitBharat.jpg', 'VikasitBharatGroup.jpg', 'VB.png', 'IDC_Presentation.jpeg', 'IDC_Trophies.jpg', 'Wiiner-Runners.jpg', 'WhatsApp Image 2026-02-08 at 00.21.28.jpeg', 'WhatsApp Image 2026-02-08 at 00.21.28 (1).jpeg'],
+            highlights: ['Scientific & Tech Marvels theme', 'Aryabhata, Chanakya, Sushruta teams', 'Viksit Bharat Run alongside cricket', 'Tree plantation drives']
+          },
+          {
+            name: 'BPL \u2014 Bavarian Premier League (1st Edition)',
+            category: 'sports',
+            description: 'The Bavarian Premier League is an annual cricket tournament organized by Bayerischer Cricket Verband e.V. (BCV). Featuring 9 franchise teams of top professional and corporate players from across Bavaria. Full-weekend entertainment festival with live commentary, music, cultural performances, and food. BPL aims to promote competitive cricket and nurture local talent, with aspirations to support Germany\u2019s pathway to Olympic cricket.',
+            folder: '2025/BPL',
+            images: ['BPL.jpg', 'BPL1.jpg', 'BPL-2.jpeg'],
+            highlights: ['9 franchise teams', 'Top professional & corporate players', 'Weekend entertainment festival', 'Pathway to Olympic cricket']
+          }
+        ]
+      },
+      '2026': {
+        title: 'Festival of Togetherness',
+        events: [
+          {
+            name: 'Festival of Togetherness 2026 (Lohri)',
+            category: 'festival',
+            description: 'The Festival of Togetherness 2026, organized by Vasudhaiva Kutumbakam (VK) and supported by indoeuropean.eu, brought together 45 Indian cultural associations (Vereine) from across Bavaria and two guest Vereine from Stuttgart. Held in collaboration with CGI Munich, the event showcased the collective strength and cultural richness of the Indian diaspora under the vision of "One World, One Family." The festival served as a testament to unity and fostered Indo-German ties through shared culture and collaboration.',
+            folder: '2026/LOHRI',
+            images: ['VK-2026-All-Veriens.jpg', 'Sponsors-Final.jpg'],
+            highlights: ['45 cultural associations from Bavaria', '2 guest associations from Stuttgart', 'CGI Munich collaboration', '"One World, One Family" vision']
+          }
+        ]
+      }
+    };
+
+    // ============================================
+    // RENDER TIMELINE
+    // ============================================
+    function renderTimeline() {
+      var container = document.getElementById('timeline-accordion');
+      if (!container) return;
+
+      var html = '';
+      var years = Object.keys(eventData);
+
+      years.forEach(function(year) {
+        var yd = eventData[year];
+        var count = yd.events.length;
+        var yid = 'year-' + year;
+
+        html += '<div class="year-section" data-year="' + year + '">';
+
+        // Year trigger
+        html += '<div class="year-trigger" onclick="toggleYear(\'' + yid + '\')" id="trigger-' + yid + '">';
+        html += '<span class="year-number-badge">' + year + '</span>';
+        html += '<div class="year-info">';
+        html += '<div class="year-title-text">' + yd.title + '</div>';
+        html += '<div class="year-event-count">' + count + ' event' + (count !== 1 ? 's' : '') + '</div>';
+        html += '</div>';
+        html += '<div class="year-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>';
+        html += '</div>';
+
+        // Year panel
+        html += '<div class="year-panel" id="panel-' + yid + '">';
+        html += '<div class="year-panel-inner">';
+        html += '<div class="year-events-list">';
+
+        yd.events.forEach(function(evt, ei) {
+          var eid = yid + '-e' + ei;
+
+          html += '<div class="event-accordion" id="' + eid + '">';
+
+          // Event trigger
+          html += '<div class="event-trigger" onclick="toggleEvent(\'' + eid + '\')">';
+          html += '<span class="event-dot ' + evt.category + '"></span>';
+          html += '<span class="event-name">' + evt.name + '</span>';
+          html += '<span class="event-badge">' + evt.category + '</span>';
+          html += '<span class="event-mini-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>';
+          html += '</div>';
+
+          // Event panel
+          html += '<div class="event-panel"><div class="event-panel-inner"><div class="event-content">';
+          html += '<p class="event-description">' + evt.description + '</p>';
+
+          // Highlights
+          if (evt.highlights && evt.highlights.length > 0) {
+            html += '<div class="event-highlights"><ul>';
+            evt.highlights.forEach(function(h) {
+              html += '<li>' + h + '</li>';
+            });
+            html += '</ul></div>';
+          }
+
+          // Gallery
+          if (evt.images.length > 0) {
+            html += '<div class="event-gallery">';
+            evt.images.forEach(function(img) {
+              var imgPath = encodeURI(evt.folder + '/' + img);
+              var safeImgPath = imgPath.replace(/'/g, "\\'");
+              var safeCaption = img.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ').replace(/'/g, "\\'");
+              html += '<div class="gallery-thumb" onclick="openLightbox(\'' + safeImgPath + '\', \'' + safeCaption + '\', \'' + year + '\', ' + ei + ')">';
+              html += '<img src="' + imgPath + '" alt="' + evt.name + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">';
+              html += '<span class="thumb-zoom"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>';
+              html += '</div>';
+            });
+            html += '</div>';
+          } else {
+            html += '<div class="no-images-msg">Photos coming soon</div>';
+          }
+
+          html += '</div></div></div>'; // event-content, panel-inner, event-panel
+          html += '</div>'; // event-accordion
+        });
+
+        html += '</div></div></div>'; // year-events-list, year-panel-inner, year-panel
+        html += '</div>'; // year-section
+      });
+
+      container.innerHTML = html;
+    }
+
+    // ============================================
+    // ACCORDION INTERACTIONS
+    // ============================================
+    function toggleYear(yid) {
+      var trigger = document.getElementById('trigger-' + yid);
+      var panel = document.getElementById('panel-' + yid);
+      var section = trigger.closest('.year-section');
+      var isOpen = panel.classList.contains('open');
+
+      if (isOpen) {
+        panel.classList.remove('open');
+        trigger.classList.remove('active');
+        section.classList.remove('yr-active');
+      } else {
+        panel.classList.add('open');
+        trigger.classList.add('active');
+        section.classList.add('yr-active');
+        spawnConfetti(trigger);
+        setTimeout(function() {
+          trigger.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 350);
+      }
+    }
+
+    function toggleEvent(eid) {
+      var card = document.getElementById(eid);
+      var isOpen = card.classList.contains('evt-open');
+
+      if (isOpen) {
+        card.classList.remove('evt-open');
+      } else {
+        card.classList.add('evt-open');
+        setTimeout(function() {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 350);
+      }
+    }
+
+    // ============================================
+    // CONFETTI EFFECT
+    // ============================================
+    function spawnConfetti(el) {
+      if (prefersReducedMotion) return;
+      var rect = el.getBoundingClientRect();
+      var colors = ['#d4a853', '#22c55e', '#3b82f6', '#ec4899', '#f97316', '#a855f7'];
+      for (var i = 0; i < 15; i++) {
+        var p = document.createElement('div');
+        p.className = 'confetti-bit';
+        p.style.left = (rect.left + Math.random() * rect.width) + 'px';
+        p.style.top = (rect.top + rect.height * 0.5) + 'px';
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        var size = 4 + Math.random() * 6;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        p.style.animationDuration = (0.8 + Math.random() * 0.6) + 's';
+        p.style.animationDelay = (Math.random() * 0.15) + 's';
+        document.body.appendChild(p);
+        (function(particle) {
+          setTimeout(function() { particle.remove(); }, 1600);
+        })(p);
+      }
+    }
+
+    // ============================================
+    // LIGHTBOX
+    // ============================================
+    var currentGallery = [];
+    var currentIndex = 0;
+
+    function openLightbox(src, caption, year, evtIdx) {
+      var yd = eventData[year];
+      if (yd && yd.events[evtIdx]) {
+        var evt = yd.events[evtIdx];
+        currentGallery = evt.images.map(function(img) {
+          return {
+            src: encodeURI(evt.folder + '/' + img),
+            caption: img.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ')
+          };
+        });
+        currentIndex = 0;
+        for (var i = 0; i < currentGallery.length; i++) {
+          if (currentGallery[i].src === src) { currentIndex = i; break; }
+        }
+      } else {
+        currentGallery = [{ src: src, caption: caption }];
+        currentIndex = 0;
+      }
+
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      updateCounter();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event) event.stopPropagation();
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(dir, event) {
+      if (event) event.stopPropagation();
+      if (currentGallery.length === 0) return;
+      currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
+      var photo = currentGallery[currentIndex];
+      document.getElementById('lightbox-img').src = photo.src;
+      document.getElementById('lightbox-caption').textContent = photo.caption;
+      updateCounter();
+    }
+
+    function updateCounter() {
+      var c = document.getElementById('lightbox-counter');
+      if (!c) {
+        c = document.createElement('div');
+        c.id = 'lightbox-counter';
+        c.className = 'lightbox-counter';
+        document.getElementById('lightbox').appendChild(c);
+      }
+      c.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      else if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    // Touch swipe for lightbox
+    var touchStartX = 0;
+    var lbEl = document.getElementById('lightbox');
+    if (lbEl) {
+      lbEl.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      lbEl.addEventListener('touchend', function(e) {
+        var diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+          navigateLightbox(diff > 0 ? 1 : -1);
+        }
+      }, { passive: true });
+    }
+
+    // ============================================
+    // SCROLL ANIMATIONS
+    // ============================================
+    function initScrollAnimations() {
+      var sections = document.querySelectorAll('.year-section');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { obs.observe(s); });
+    }
+
+    // ============================================
+    // FILM STRIP
+    // ============================================
+    var filmPhotos = [
+      { src: '2013/INDIA SPORTS DAY/2.jpg', title: 'India Sports Day', year: '2013' },
+      { src: '2013/INDIA SPORTS DAY/3.jpg', title: 'Cricket Action', year: '2013' },
+      { src: '2013/INDIA SPORTS DAY/5.jpg', title: 'Community Spirit', year: '2013' },
+      { src: '2015/Namaste India/NamastheIndia.jpeg', title: 'Namaste India', year: '2015' },
+      { src: '2015/Namaste India/2.jpg', title: 'Classical Dance', year: '2015' },
+      { src: '2015/INDIAN SPORTS DAY/1.jpg', title: 'Indian Sports Day', year: '2015' },
+      { src: '2015/INDIAN SPORTS DAY/4.jpg', title: 'Sports Festival', year: '2015' },
+      { src: '2016/Independence Day Cup 2016/1.jpg', title: 'Independence Day Cup', year: '2016' },
+      { src: '2018/INDIA SPORTS DAY/IndiaSportsDay.jpeg', title: 'India Sports Day', year: '2018' },
+      { src: '2018/INDIA SPORTS DAY/AnnualSportsDay.jpeg', title: 'Annual Sports Day', year: '2018' },
+      { src: '2018/INDIA SPORTS DAY/1.jpg', title: 'Sports Celebration', year: '2018' },
+      { src: '2020/RD CUP/RDCup2020.jpeg', title: 'RD Cup Cricket', year: '2020' },
+      { src: '2020/RD CUP/Badminton.jpeg', title: 'Badminton Tournament', year: '2020' },
+      { src: '2021/WALK FOR INDIA/WalkForIndia.jpg', title: 'Walk for India @75', year: '2021' },
+      { src: '2021/WALK FOR INDIA/WFI-1.jpg', title: 'Walking Challenge', year: '2021' },
+      { src: '2022/INDIA CUP/1. Event.jpeg', title: 'India Cup Event', year: '2022' },
+      { src: '2022/INDIA CUP/IDCTeams.jpeg', title: 'IDC Teams', year: '2022' },
+      { src: '2022/Newbiescup/Newbiescup.jpg', title: 'Newbies Cup', year: '2022' },
+      { src: '2022/SUNRISERS MUNICH CUP - 2022/SunrisersCup.jpg', title: 'Sunrisers Cup', year: '2022' },
+      { src: '2023/BHARAT CUP/BharatCup1.jpg', title: 'Bharat Cup', year: '2023' },
+      { src: '2023/BHARAT CUP/BharatCupGroups.jpg', title: 'Bharat Cup Groups', year: '2023' },
+      { src: '2023/INDIA CUP/IndiaCup_2ndEd.jpg', title: 'India Cup 2nd Ed', year: '2023' },
+      { src: '2023/INDIA CUP/banner.jpg', title: 'India Cup Banner', year: '2023' },
+      { src: '2023/PUNJABI MELA/PunjabiMela.jpg', title: 'Punjabi Mela', year: '2023' },
+      { src: '2024/SOUTH & EAST COAST INDIAN FOOD FESTIVAL/FoodFestival.jpg', title: 'Food Festival', year: '2024' },
+      { src: '2024/RD CUP/RDCupGames.jpg', title: 'RD Cup Games', year: '2024' },
+      { src: '2024/RD CUP/RDCupVolleyball.jpg', title: 'Beach Volleyball', year: '2024' },
+      { src: '2024/BHARAT CUP/BharatCupGroup.jpg', title: 'Bharat Cup Group', year: '2024' },
+      { src: '2024/INDIA CUP/IDC1.jpg', title: 'India Cup 3rd Ed', year: '2024' },
+      { src: '2024/INDIA CUP/IDCTeam.jpg', title: 'IDC Team Photo', year: '2024' },
+      { src: '2024/BAVARIA CUP/BavariaCup.jpg', title: 'Bavaria Cup', year: '2024' },
+      { src: '2025/LOHRI/FOT-2025.jpg', title: 'Festival of Togetherness', year: '2025' },
+      { src: '2025/LOHRI/CGI.jpeg', title: 'CGI Munich', year: '2025' },
+      { src: '2025/Vikasit Bharat RUN/VikasitBharatRun.jpg', title: 'Viksit Bharat Run', year: '2025' },
+      { src: '2025/Vikasit Bharat RUN/VikasitBharatGroup.jpg', title: 'Viksit Bharat Group', year: '2025' },
+      { src: '2025/INDIA FOOTBALL CENTER/IndiaFootballCenter.jpg', title: 'India Football Centre', year: '2025' },
+      { src: '2025/BPL/BPL1.jpg', title: 'Bavarian Premier League', year: '2025' },
+      { src: '2025/RD Cup/VolleyballRDCup.jpg', title: 'RD Cup Volleyball', year: '2025' },
+      { src: '2026/LOHRI/VK-2026-All-Veriens.jpg', title: '45+ Vereine United', year: '2026' }
+    ];
+
+    function buildFilmStrip() {
+      var track = document.getElementById('filmstrip-track');
+      var topRow = document.getElementById('sprockets-top');
+      var btmRow = document.getElementById('sprockets-bottom');
+      if (!track) return;
+
+      // Shuffle photos
+      var photos = filmPhotos.slice();
+      for (var i = photos.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = photos[i]; photos[i] = photos[j]; photos[j] = tmp;
+      }
+
+      // Build frames (double for seamless loop)
+      var html = '';
+      var all = photos.concat(photos); // duplicate for infinite scroll
+      all.forEach(function(p, idx) {
+        var frameNum = String(idx + 1).padStart(3, '0');
+        html += '<div class="film-frame">';
+        html += '<img src="' + encodeURI(p.src) + '" alt="' + p.title + '" loading="lazy" onerror="this.closest(\'.film-frame\').style.display=\'none\'">';
+        html += '<div class="film-caption">';
+        html += '<span class="film-caption-year">' + p.year + '</span>';
+        html += '<span class="film-caption-title">' + p.title + '</span>';
+        html += '</div>';
+        html += '<span class="film-counter">' + frameNum + '</span>';
+        html += '</div>';
+      });
+      track.innerHTML = html;
+
+      // Adjust speed based on total frames
+      var totalWidth = all.length * 196; // frame width
+      var speed = Math.max(40, totalWidth / 80); // ~80px per second
+      track.style.setProperty('--film-speed', speed + 's');
+      track.parentElement.style.setProperty('--film-speed', speed + 's');
+
+      // Sprocket holes
+      var holeCount = Math.ceil(totalWidth / 23);
+      var holesHtml = '';
+      for (var h = 0; h < holeCount; h++) {
+        holesHtml += '<div class="sprocket-hole"></div>';
+      }
+      topRow.innerHTML = holesHtml;
+      btmRow.innerHTML = holesHtml;
+    }
+
+    // ============================================
+    // INITIALIZE
+    // ============================================
+    window.addEventListener('DOMContentLoaded', function() {
+      buildFilmStrip();
+      renderTimeline();
+      initScrollAnimations();
+    });
+  </script>
+</body>
+</html>
