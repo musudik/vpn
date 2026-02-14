@@ -877,9 +877,9 @@
   background:
     repeating-linear-gradient(90deg,
       transparent 0px,
-      transparent 194px,
-      rgba(40,40,40,0.8) 194px,
-      rgba(40,40,40,0.8) 196px
+      transparent 268px,
+      rgba(40,40,40,0.8) 268px,
+      rgba(40,40,40,0.8) 270px
     );
 }
 .sprocket-row {
@@ -940,7 +940,7 @@
 /* Frame */
 .film-frame {
   position: relative;
-  width: 196px;
+  width: 270px;
   height: var(--strip-h);
   flex-shrink: 0;
   overflow: hidden;
@@ -1038,7 +1038,7 @@
 @media (max-width: 768px) {
   .filmstrip-wrapper { top: 3.5rem; }
   .filmstrip { --strip-h: 100px; }
-  .film-frame { width: 110px; }
+  .film-frame { width: 150px; }
   .film-caption { padding: 4px 6px; }
   .film-caption-title { font-size: 0.45rem; }
   .film-caption-year { font-size: 0.55rem; }
@@ -1049,7 +1049,7 @@
 }
 @media (max-width: 480px) {
   .filmstrip { --strip-h: 80px; }
-  .film-frame { width: 95px; }
+  .film-frame { width: 120px; }
   .film-caption-title { font-size: 0.4rem; }
   .film-caption-year { font-size: 0.5rem; }
   .hero-content-push { padding-top: 5.5rem !important; }
@@ -2093,7 +2093,7 @@
       track.innerHTML = html;
 
       // Adjust speed based on total frames
-      var totalWidth = all.length * 196; // frame width
+      var totalWidth = all.length * 270; // frame width
       var speed = Math.max(40, totalWidth / 80); // ~80px per second
       track.style.setProperty('--film-speed', speed + 's');
       track.parentElement.style.setProperty('--film-speed', speed + 's');
