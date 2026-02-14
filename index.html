@@ -854,7 +854,7 @@
   animation: fadeSlideUp 1.2s ease forwards 0.1s;
 }
 .filmstrip {
-  --strip-h: 120px;
+  --strip-h: 180px;
   position: relative;
   height: calc(var(--strip-h) + 20px);
   background: #0d0d0d;
@@ -982,7 +982,7 @@
   text-overflow: ellipsis;
 }
 .film-caption-year {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: var(--accent);
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -1037,20 +1037,21 @@
 }
 @media (max-width: 768px) {
   .filmstrip-wrapper { top: 3.5rem; }
-  .filmstrip { --strip-h: 65px; }
+  .filmstrip { --strip-h: 100px; }
   .film-frame { width: 110px; }
   .film-caption { padding: 4px 6px; }
   .film-caption-title { font-size: 0.45rem; }
-  .film-caption-year { font-size: 0.4rem; }
+  .film-caption-year { font-size: 0.55rem; }
   .sprocket-hole { width: 8px; height: 5px; margin: 1px 5px; }
   .sprocket-row { height: 7px; }
   .filmstrip-edge { width: 40px; }
   .hero-content-push { padding-top: 6.5rem !important; }
 }
 @media (max-width: 480px) {
-  .filmstrip { --strip-h: 55px; }
+  .filmstrip { --strip-h: 80px; }
   .film-frame { width: 95px; }
   .film-caption-title { font-size: 0.4rem; }
+  .film-caption-year { font-size: 0.5rem; }
   .hero-content-push { padding-top: 5.5rem !important; }
 }
 
