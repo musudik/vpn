@@ -284,6 +284,616 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--muted);
     }
+
+    /* ============================================
+       HIGHLIGHTS GALLERY SECTION
+       ============================================ */
+    
+    /* Sidebar Panel Layout */
+    .highlights-panel-container {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .highlights-sidebar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    .highlights-menu-item {
+      position: relative;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+
+    .highlights-menu-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .highlights-menu-item.active {
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.1), rgba(212, 168, 83, 0.05));
+      border-color: var(--accent);
+    }
+
+    .highlights-menu-item.active .menu-arrow {
+      opacity: 1 !important;
+    }
+
+    .highlights-menu-item.active .menu-icon {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(212, 168, 83, 0.3);
+    }
+
+    /* Custom Scrollbar for Content Panel */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) rgba(255, 255, 255, 0.05);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent), #b8942f);
+      border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    /* Content Panel Styles */
+    .highlight-content-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-content-body {
+      line-height: 1.8;
+    }
+
+    .highlight-stat-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .highlight-achievement-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .highlight-achievement-item:last-child {
+      border-bottom: none;
+    }
+
+    .highlight-image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .highlight-gallery-img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-gallery-img:hover {
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+
+    /* Mobile responsiveness for sidebar layout */
+    @media (max-width: 1024px) {
+      .highlights-panel-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .highlights-sidebar {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .highlights-content-panel {
+        max-height: none;
+      }
+
+      .highlights-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.5rem;
+      }
+
+      .highlights-menu li {
+        width: 100%;
+      }
+
+      .highlights-menu-item {
+        padding: 0.875rem 1rem;
+        gap: 0.75rem;
+      }
+
+      .highlights-menu-item .menu-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .highlights-menu-item .menu-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      .highlights-menu-item .menu-arrow {
+        display: none;
+      }
+
+      #highlights-content-area {
+        padding: 1.25rem;
+      }
+
+      .highlight-content-header h3 {
+        font-size: 1.5rem;
+      }
+
+      .highlight-content-header .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .highlight-stat-card {
+        padding: 0.75rem 0.5rem;
+      }
+
+      .highlight-stat-card .text-2xl {
+        font-size: 1.25rem;
+      }
+
+      .highlight-image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+
+      .highlight-content-body p {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 480px) {
+      .highlights-panel-container {
+        border-radius: 1rem;
+      }
+
+      .highlights-sidebar > .p-4 {
+        padding: 0.75rem 1rem;
+      }
+
+      .highlights-menu-item {
+        padding: 0.75rem;
+      }
+
+      .highlights-menu-item .menu-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .highlights-menu-item .menu-icon svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .highlights-menu-item span.block.font-medium {
+        font-size: 0.875rem;
+      }
+
+      .highlights-menu-item span.block.text-xs {
+        font-size: 0.6875rem;
+      }
+
+      #highlights-content-area {
+        padding: 1rem;
+      }
+
+      .highlight-content-header h3 {
+        font-size: 1.25rem;
+      }
+
+      .highlight-content-header .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.375rem;
+      }
+
+      .highlight-stat-card {
+        padding: 0.625rem 0.375rem;
+      }
+
+      .highlight-stat-card .text-2xl {
+        font-size: 1rem;
+      }
+
+      .highlight-stat-card .text-xs {
+        font-size: 0.625rem;
+      }
+
+      .highlight-image-gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.375rem;
+      }
+
+      .highlight-gallery-img {
+        border-radius: 0.5rem;
+      }
+
+      .highlight-content-body {
+        font-size: 0.875rem;
+      }
+
+      .highlight-achievement-item {
+        padding: 0.5rem 0;
+        gap: 0.5rem;
+      }
+
+      .highlight-achievement-item svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .highlight-achievement-item span {
+        font-size: 0.8125rem;
+      }
+    }
+
+    /* ============================================
+       HIGHLIGHTS MODAL STYLES
+       ============================================ */
+    .highlights-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .highlights-modal.active {
+      display: flex;
+    }
+
+    .highlights-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .highlights-modal-container {
+      position: relative;
+      max-width: 1000px;
+      max-height: 90vh;
+      width: 100%;
+      background: linear-gradient(135deg, var(--card) 0%, #0d0d0d 100%);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      overflow: hidden;
+      animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.8), 0 0 100px rgba(212, 168, 83, 0.1);
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .highlights-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .highlights-modal-close:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: rotate(90deg);
+    }
+
+    .highlights-modal-content {
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+    }
+
+    .highlights-modal-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .highlights-modal-content::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    .highlights-modal-header {
+      margin-bottom: 2rem;
+    }
+
+    .highlights-modal-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .highlights-modal-badge.founder { background: var(--accent); color: var(--bg); }
+    .highlights-modal-badge.award { background: #f59e0b; color: var(--bg); }
+    .highlights-modal-badge.leadership { background: #a855f7; color: white; }
+    .highlights-modal-badge.sports { background: #10b981; color: var(--bg); }
+    .highlights-modal-badge.cultural { background: #ec4899; color: white; }
+    .highlights-modal-badge.humanitarian { background: #ef4444; color: white; }
+
+    .highlights-modal-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .highlights-modal-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .highlights-modal-stats .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .highlights-modal-stats .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .highlights-modal-stats .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .highlights-modal-gallery {
+      margin-bottom: 2rem;
+    }
+
+    .highlights-modal-main-image {
+      aspect-ratio: 16/9;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .highlight-image-placeholder-modal {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 50%, #1a1a1a 100%);
+    }
+
+    .highlights-modal-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .thumbnail-placeholder {
+      aspect-ratio: 4/3;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .thumbnail-placeholder:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .thumbnail-placeholder.active-thumb {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent), 0 4px 12px rgba(212, 168, 83, 0.3);
+    }
+
+    .thumbnail-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .highlights-modal-main-image {
+      cursor: pointer;
+    }
+
+    .highlights-modal-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .highlights-modal-main-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .highlights-modal-body {
+      margin-bottom: 2rem;
+    }
+
+    .highlights-modal-body p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .highlights-modal-body p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      float: left;
+      line-height: 1;
+      margin-right: 0.75rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+
+    .highlights-modal-achievements {
+      background: rgba(212, 168, 83, 0.05);
+      border: 1px solid rgba(212, 168, 83, 0.15);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .highlights-modal-achievements h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .highlights-modal-achievements ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .highlights-modal-achievements li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .highlights-modal-achievements li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .highlights-modal-container {
+        border-radius: 1.5rem;
+        max-height: 95vh;
+      }
+
+      .highlights-modal-content {
+        padding: 1.5rem;
+      }
+
+      .highlights-modal-title {
+        font-size: 1.75rem;
+      }
+
+      .highlights-modal-stats {
+        gap: 1rem;
+      }
+
+      .highlights-modal-stats .stat-value {
+        font-size: 1.5rem;
+      }
+
+      .highlights-modal-thumbnails {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .highlights-modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+      }
+    }
     
 /* Photo Scatter Styles */
 .photo-scatter {
@@ -1068,6 +1678,7 @@
       </a>
       <div class="hidden md:flex items-center gap-8">
         <a href="#about" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">About</a>
+        <a href="#highlights" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">Highlights</a>
         <a href="#journey" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">Journey</a>
         <a href="#impact" class="nav-link text-sm text-[var(--muted)] hover:text-white transition-colors">Impact</a>
         <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-sm font-medium text-black">Connect</a>
@@ -1083,6 +1694,7 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="fixed inset-0 bg-[var(--bg)] z-40 hidden flex-col items-center justify-center gap-8">
     <a href="#about" class="text-2xl font-display" onclick="closeMobileMenu()">About</a>
+    <a href="#highlights" class="text-2xl font-display" onclick="closeMobileMenu()">Highlights</a>
     <a href="#journey" class="text-2xl font-display" onclick="closeMobileMenu()">Journey</a>
     <a href="#impact" class="text-2xl font-display" onclick="closeMobileMenu()">Impact</a>
     <a href="#contact" class="btn-primary px-8 py-3 rounded-full font-medium text-black" onclick="closeMobileMenu()">Connect</a>
@@ -1175,21 +1787,36 @@
           </h2>
           <div class="space-y-6 text-[var(--muted)]">
             <p>
-              Nissankara Venkata Praneeth is a Munich-based community leader and entrepreneur 
-              with extensive experience in cultural diplomacy, social integration, and public engagement. 
-              As the founder of IndoEuropean.eu, he has built one of the largest networking platforms 
-              for Indians living in Europe.
+              I’m <em class="text-white">Nissankara Venkata Praneeth</em>, a Munich-based community leader and
+              entrepreneur with extensive experience in cultural diplomacy, social
+              integration, and public engagement. As the founder of IndoEuropean.eu, I
+              have built one of the largest networking platforms for Indians living in Europe,
+              driven by the conviction that our community deserves a seamless transition
+              into their new lives abroad.
             </p>
             <p>
-              Guided by the philosophy of <em class="text-white">Vasudeva Kutumbakam</em> 
-              (The World is One Family), his work bridges geographical gaps and fosters a deep 
-              sense of belonging among non-resident Indians across the continent.
+              At 28, I took on the responsibility of Founder President of the 
+              Mana Telugu Association (MATA) Germany. My primary goal was the consolidation of our vibrant
+              community across Germany's major power centers: Munich, Frankfurt, Berlin,
+              Hamburg, and Düsseldorf. By unifying these regional chapters, we created a
+              powerhouse of cultural preservation.
             </p>
             <p>
-              At just 28, he became the Founder President of the Mana Telugu Association, 
-              successfully consolidating Telugu community platforms throughout Germany. 
-              His contributions were recognized with the prestigious Under-40 Award at the 
-              Belgian Parliament.
+              Over the last 18 years, I have helped facilitate more than 150 sports events,
+              including our flagship tournaments: the India Cup, Bavaria Cup, and Bharat
+              Cup. These arenas are where the diaspora truly connects, transcending
+              professional titles to build lifelong friendships. Similarly, our cultural calendar—spanning Diwali, Holi, Iftar, Ugadi, and
+              Sankranti—serves as a showcase for classical arts and education, ensuring
+              our traditions are not just remembered, but celebrated with the wider
+              European public.
+            </p>
+            <p>
+              My work in bridging these two worlds was recognized at the Belgian
+              Parliament, where I received the prestigious Under-40 Award (2020
+              class of Europe-India 40 Leaders). The selection honored leadership
+              within the diaspora context, and this recognition has significantly
+              boosted my ability to foster collaborations between Indian grassroots
+              organizations and European policymakers.
             </p>
           </div>
         </div>
@@ -1198,10 +1825,127 @@
             <img src="Pranith.jpg" alt="Nissankara Venkata Praneeth" class="w-full h-full object-cover" />
           </div>
           <div class="absolute -bottom-6 -right-6 bg-[var(--card)] border border-[var(--border)] rounded-xl p-6 max-w-xs">
-            <p class="text-sm text-[var(--muted)]">"Founder INDOEUROPEAN.EU"</p>
+            <p class="text-sm text-[var(--muted)]">Founder of indoeuropean.eu</p>
             <p class="font-display text-lg mt-2">Nissankara Venkata Praneeth</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section - Sidebar Navigation -->
+  <section id="highlights" class="py-16 md:py-24 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-0 w-96 h-96 bg-[var(--accent)]/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center mb-8 md:mb-12">
+        <p class="text-[var(--accent)] text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase mb-3 md:mb-4 font-medium">Excellence & Achievement</p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-white via-[var(--accent)] to-amber-200 bg-clip-text text-transparent">
+          Defining Moments
+        </h2>
+      </div>
+
+      <!-- Sidebar + Content Panel Layout -->
+      <div class="highlights-panel-container flex flex-col lg:flex-row gap-0 rounded-xl md:rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--card)]/50 backdrop-blur-sm lg:min-h-[600px]">
+        
+        <!-- Left Sidebar Menu -->
+        <nav class="highlights-sidebar w-full lg:w-80 flex-shrink-0 bg-gradient-to-b from-[#111] to-[#0d0d0d] border-b lg:border-b-0 lg:border-r border-[var(--border)]">
+          <div class="p-3 md:p-4 border-b border-[var(--border)]/50">
+            <span class="text-xs text-[var(--muted)] uppercase tracking-widest">Select a highlight</span>
+          </div>
+          <ul class="highlights-menu p-2">
+            <li>
+              <button class="highlights-menu-item active w-full text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300" data-highlight="indoeuropean">
+                <span class="menu-icon w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)]/20 to-amber-600/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-medium text-white">IndoEuropean.eu</span>
+                  <span class="block text-xs text-[var(--muted)]">Founder & Visionary</span>
+                </div>
+                <svg class="w-5 h-5 text-[var(--accent)] opacity-0 menu-arrow transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li>
+              <button class="highlights-menu-item w-full text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300" data-highlight="award">
+                <span class="menu-icon w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500/20 to-amber-600/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-medium text-white">Under-40 Recognition</span>
+                  <span class="block text-xs text-[var(--muted)]">Belgian Parliament Award</span>
+                </div>
+                <svg class="w-5 h-5 text-[var(--accent)] opacity-0 menu-arrow transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li>
+              <button class="highlights-menu-item w-full text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300" data-highlight="sports">
+                <span class="menu-icon w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-600/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-medium text-white">Sports Tournaments</span>
+                  <span class="block text-xs text-[var(--muted)]">150+ Events Organized</span>
+                </div>
+                <svg class="w-5 h-5 text-[var(--accent)] opacity-0 menu-arrow transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li>
+              <button class="highlights-menu-item w-full text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300" data-highlight="cultural">
+                <span class="menu-icon w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-600/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-medium text-white">Cultural Celebrations</span>
+                  <span class="block text-xs text-[var(--muted)]">18 Years of Heritage</span>
+                </div>
+                <svg class="w-5 h-5 text-[var(--accent)] opacity-0 menu-arrow transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li>
+              <button class="highlights-menu-item w-full text-left p-4 rounded-xl flex items-center gap-4 transition-all duration-300" data-highlight="humanitarian">
+                <span class="menu-icon w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-rose-600/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <span class="block font-medium text-white">Humanitarian Aid</span>
+                  <span class="block text-xs text-[var(--muted)]">70+ Partner Organizations</span>
+                </div>
+                <svg class="w-5 h-5 text-[var(--accent)] opacity-0 menu-arrow transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Content Panel -->
+        <div class="highlights-content-panel flex-1 overflow-y-auto max-h-[600px] custom-scrollbar">
+          <!-- Content will be dynamically loaded here -->
+          <div id="highlights-content-area" class="p-8"></div>
+        </div>
+      </div>
+
+      <!-- Continue to Journey -->
+      <div class="flex justify-center mt-12">
+        <a href="#journey" class="flex flex-col items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors group">
+          <span class="text-sm tracking-wider">Explore Journey</span>
+          <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1359,7 +2103,339 @@
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
+  <!-- Highlights Modal -->
+  <div id="highlightsModal" class="highlights-modal">
+    <div class="highlights-modal-backdrop" onclick="closeHighlightsModal()"></div>
+    <div class="highlights-modal-container">
+      <button class="highlights-modal-close" onclick="closeHighlightsModal()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="highlights-modal-content">
+        <div class="highlights-modal-header">
+          <span id="modalBadge" class="highlights-modal-badge"></span>
+          <h2 id="modalTitle" class="highlights-modal-title font-display"></h2>
+          <div id="modalStats" class="highlights-modal-stats"></div>
+        </div>
+        
+        <!-- Modal Image Gallery -->
+        <div class="highlights-modal-gallery">
+          <div id="modalMainImage" class="highlights-modal-main-image">
+            <!-- Main image placeholder -->
+            <div class="highlight-image-placeholder-modal">
+              <svg class="w-20 h-20 text-[var(--accent)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+          </div>
+          <div id="modalThumbnails" class="highlights-modal-thumbnails">
+            <!-- Thumbnail placeholders -->
+            <div class="thumbnail-placeholder"><svg class="w-6 h-6 text-[var(--accent)]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+            <div class="thumbnail-placeholder"><svg class="w-6 h-6 text-[var(--accent)]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+            <div class="thumbnail-placeholder"><svg class="w-6 h-6 text-[var(--accent)]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+            <div class="thumbnail-placeholder"><svg class="w-6 h-6 text-[var(--accent)]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+          </div>
+        </div>
+        
+        <!-- Modal Body Content -->
+        <div id="modalBody" class="highlights-modal-body">
+          <!-- Dynamic content inserted here -->
+        </div>
+        
+        <!-- Modal Key Achievements -->
+        <div id="modalAchievements" class="highlights-modal-achievements">
+          <!-- Dynamic achievements list -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ============================================
+    // HIGHLIGHTS MODAL DATA & FUNCTIONALITY
+    // ============================================
+    const highlightsData = {
+      indoeuropean: {
+        badge: 'founder',
+        badgeText: 'Founder',
+        title: 'IndoEuropean.eu',
+        images: [
+          'highlites/1/IE-Vision.png'
+        ],
+        stats: [
+          { value: '100K+', label: 'Members' },
+          { value: '23+', label: 'Countries' },
+          { value: '2007', label: 'Founded' }
+        ],
+        content: `
+          <p><a href="https://indoeuropean.eu" target="_blank" rel="noopener noreferrer">IndoEuropean.eu</a> stands as a testament to visionary community building and digital innovation in the Indian diaspora space. Founded by Nissankara Venkata Praneeth, this groundbreaking platform has evolved into Europe's most comprehensive networking ecosystem for Indians living abroad. What began as a simple idea to connect scattered communities across national borders has transformed into a vibrant digital homeland serving over 100,000 active members spanning 23 European countries.</p>
+          
+          <p>The platform operates on the foundational philosophy of "Vasudeva Kutumbakam" — the world is one family — creating bridges between professionals, students, families, and entrepreneurs who share a common cultural heritage. IndoEuropean.eu provides a multifaceted approach to community engagement, offering job portals specifically tailored for Indian professionals navigating the European job market, housing assistance networks that help newcomers find accommodation, and comprehensive guides covering everything from visa procedures to cultural integration.</p>
+          
+          <p>Beyond mere networking, the platform has become a critical resource hub during times of crisis. During the COVID-19 pandemic, IndoEuropean.eu mobilized its vast network to coordinate medical supplies, organize repatriation flights, and provide real-time information to stranded Indians across Europe. The platform's WhatsApp groups, Telegram channels, and social media presence extend its reach to every corner of the continent, ensuring no member of the Indian diaspora feels isolated or uninformed.</p>
+          
+          <p>The success of IndoEuropean.eu lies in its understanding that technology serves community, not the other way around. Regular virtual events, webinars featuring industry experts, cultural showcases, and pan-European celebrations have created a sense of belonging that transcends geographical boundaries. For many, it has become the first point of contact when arriving in Europe, and a lifelong connection to their roots while building new lives abroad.</p>
+        `,
+        achievements: [
+          'Built Europe\'s largest Indian diaspora digital platform with 100,000+ registered members',
+          'Created dedicated job portals connecting Indian professionals with European employers',
+          'Established housing assistance networks across 23 European countries',
+          'Coordinated emergency support during COVID-19 pandemic for stranded Indians',
+          'Organized 500+ virtual events, webinars, and cultural programs',
+          'Developed multilingual resources in Telugu, Hindi, Tamil, and English'
+        ]
+      },
+      award: {
+        badge: 'award',
+        badgeText: 'Award',
+        title: 'Under-40 Recognition — Belgian Parliament',
+        images: [
+          'highlites/2/1.jpg',
+          'highlites/2/2.jpeg'
+        ],
+        stats: [
+          { value: '2019', label: 'Year' },
+          { value: '28', label: 'Age' },
+          { value: 'Brussels', label: 'Location' }
+        ],
+        content: `
+          <p>The prestigious Under-40 Award presented at the Belgian Parliament in Brussels represents one of the most significant recognitions of Indian diaspora leadership in European history. This honor was bestowed upon Nissankara Venkata Praneeth at the remarkable age of just 28, acknowledging his extraordinary contributions to community building, cultural diplomacy, and social integration across the European continent.</p>
+          
+          <p>The award ceremony, held in the distinguished halls of the Belgian Parliament, brought together diplomats, community leaders, and dignitaries from across Europe to celebrate emerging leaders who have made exceptional contributions to cross-cultural understanding and community development. The selection committee particularly noted Praneeth's innovative approach to leveraging technology for community building, his tireless efforts in organizing pan-European cultural events, and his dedication to helping Indian nationals integrate successfully into European society while maintaining their cultural identity.</p>
+          
+          <p>This recognition came at a pivotal moment when the Indian diaspora in Europe was experiencing unprecedented growth, with increasing numbers of students, professionals, and families making the continent their home. The award highlighted the critical role that community leaders play in facilitating this transition, serving as bridges between cultures and creating support systems that make relocation less daunting. Praneeth's work demonstrated that effective community leadership extends beyond organizing events — it involves creating sustainable institutions and networks that serve generations.</p>
+          
+          <p>The Under-40 Award has since served as a catalyst for even greater initiatives, opening doors to collaborations with European institutions, Indian diplomatic missions, and international organizations focused on diaspora engagement. It stands as validation that grassroots community work, when executed with vision and dedication, gains recognition at the highest levels of government and society.</p>
+        `,
+        achievements: [
+          'Youngest recipient of the Under-40 Community Leadership Award',
+          'Recognition by the Belgian Parliament for exceptional cultural diplomacy',
+          'Honored for building cross-border community networks across 23 European countries',
+          'Acknowledged for innovative digital community building approaches',
+          'Celebrated for contributions to Indo-European cultural exchange',
+          'Featured in multiple European and Indian media publications'
+        ]
+      },
+      sports: {
+        badge: 'sports',
+        badgeText: 'Sports',
+        title: 'Sports Tournaments',
+        images: [
+          '2023/BHARAT CUP/BharatCup1.jpg',
+          '2023/INDIA CUP/IDC_Poster.jpg',
+          '2024/BHARAT CUP/BharatCupGroup.jpg',
+          '2023/INDIA CUP/idc.jpeg',
+          '2024/INDIA CUP/IDCTshirtLaunch.jpg',
+        ],
+        stats: [
+          { value: '150+', label: 'Tournaments' },
+          { value: '18', label: 'Years' },
+          { value: 'Pan-European', label: 'Reach' }
+        ],
+        content: `
+          <p>Sport has always been a universal language that transcends cultural and linguistic barriers, and Nissankara Venkata Praneeth has masterfully leveraged this power to build community bonds across Europe. Over 18 years of dedicated organizing, he has spearheaded more than 150 sporting tournaments that have brought together thousands of participants from diverse Indian regional backgrounds and European nationalities, fostering unity through friendly competition.</p>
+          
+          <p>The flagship cricket tournaments, including the prestigious India Cup, Bavaria Cup, and Bharat Cup, have become annual traditions eagerly anticipated by Indian communities across Europe. These events draw teams from Germany, the Netherlands, Belgium, France, the UK, and beyond, transforming weekend competitions into cultural festivals that celebrate both athletic achievement and Indian heritage. The tournaments feature not just cricket but also football, volleyball, badminton, and athletics, ensuring inclusive participation across different sporting interests and age groups.</p>
+          
+          <p>What distinguishes these sporting events is their holistic approach to community building. Each tournament is accompanied by cultural programs, food festivals, and networking opportunities that extend the experience far beyond the playing field. Families attend in full force, children participate in junior divisions, and spectators enjoy performances of traditional music and dance between matches. The organizing approach ensures that first-time attendees become lifelong community members.</p>
+          
+          <p>The infrastructure built around these tournaments — including volunteer networks, sponsorship relationships, venue partnerships, and media coverage — has created a sustainable model that continues to grow year after year. Many participants credit these events with helping them establish professional connections, find housing, and build their social networks in their adopted European countries.</p>
+        `,
+        achievements: [
+          'Organized over 150 sporting tournaments across 18 years in Europe',
+          'Established flagship events: India Cup, Bavaria Cup, Bharat Cup, Desi Cup, and more',
+          'Attracted participation from teams representing 15+ European countries',
+          'Integrated multiple sports: cricket, football, volleyball, badminton, and athletics',
+          'Created junior divisions encouraging next-generation sports participation',
+          'Built sustainable volunteer networks and sponsorship partnerships'
+        ]
+      },
+      cultural: {
+        badge: 'cultural',
+        badgeText: 'Cultural',
+        title: 'Cultural Celebrations',
+        images: [
+          '2025/HOLI BASH/Holi.jpg',
+          '2025/IFTIYAR/Iftyar.jpg',
+          '2025/LOHRI/FOT-2025.jpg',
+        ],
+        stats: [
+          { value: '18', label: 'Years' },
+          { value: '50+', label: 'Annual Events' },
+          { value: 'All Regions', label: 'Represented' }
+        ],
+        content: `
+          <p>Cultural preservation in the diaspora requires deliberate, sustained effort, and Nissankara Venkata Praneeth has dedicated 18 years to ensuring that Indian heritage not only survives but thrives across Europe. Through meticulously organized festivals, concerts, and cultural programs, he has created spaces where the vibrancy of India's diverse traditions is celebrated with authenticity and grandeur, allowing generations growing up abroad to connect with their roots.</p>
+          
+          <p>The calendar of events spans the full spectrum of Indian regional and religious celebrations. Grand Diwali galas illuminate European autumn nights with traditional lamps, fireworks, and cultural performances. Holi celebrations bring the festival of colors to city parks and community centers, attracting both Indian families and curious European neighbors. Ugadi, Sankranti, Pongal, Onam, Durga Puja, Navratri, and Ganesh Chaturthi — each festival receives dedicated attention, ensuring that every regional community finds representation and belonging.</p>
+          
+          <p>Beyond religious festivals, the cultural programming includes classical arts showcases featuring Bharatanatyam, Kuchipudi, Kathak, and Carnatic and Hindustani music performances by both local talents and visiting artists from India. Events like "Namaste India" and "Salaam India" concerts have become cultural landmarks, drawing audiences in the thousands and receiving coverage in European and Indian media. These productions maintain professional standards while remaining accessible to community members of all economic backgrounds.</p>
+          
+          <p>The impact extends to cultural education, with workshops teaching traditional art forms, cooking classes exploring regional cuisines, and language programs ensuring that Telugu, Hindi, Tamil, and other Indian languages are passed to the next generation. This comprehensive approach to cultural programming has established a model that other diaspora communities worldwide have studied and replicated.</p>
+        `,
+        achievements: [
+          'Organized cultural events spanning 18 consecutive years without interruption',
+          'Hosted 50+ annual events celebrating festivals from all Indian regions',
+          'Produced major concerts: "Namaste India," "Salaam India," and classical showcases',
+          'Maintained authentic celebration of Diwali, Holi, Ugadi, Sankranti, Onam, and more',
+          'Established cultural education programs for dance, music, and language',
+          'Attracted thousands of attendees to signature events across Europe'
+        ]
+      },
+      humanitarian: {
+        badge: 'humanitarian',
+        badgeText: 'Humanitarian',
+        title: 'Humanitarian Aid',
+        images: [
+          '2025/PeaceProtest.jfif',
+          '2025/Vikasit Bharat RUN/VikasitBharatRun.jpg',
+          '2025/IndiaOKM/IndiaOKM.png',
+        ],
+        stats: [
+          { value: '70+', label: 'Partner Orgs' },
+          { value: 'COVID-19', label: 'Relief' },
+          { value: 'Global', label: 'Impact' }
+        ],
+        content: `
+          <p>When communities face their darkest hours, true leadership reveals itself through action rather than words. Nissankara Venkata Praneeth has consistently mobilized his extensive networks and organizational capabilities in service of humanitarian causes, building partnerships with over 70 organizations to deliver aid and support during crises both near and far.</p>
+          
+          <p>The COVID-19 pandemic presented unprecedented challenges for the Indian diaspora in Europe. Praneeth's organizations sprang into action, coordinating repatriation efforts for stranded Indians, organizing distribution of essential supplies to those facing financial hardship, and establishing information hotlines to combat misinformation and connect people with medical resources. Volunteers from IndoEuropean.eu and associated organizations worked around the clock, demonstrating that community networks built over years of cultural celebration could transform overnight into crisis response infrastructure.</p>
+          
+          <p>Humanitarian engagement extends beyond emergency response to sustained charitable initiatives. Cancer fundraising events have mobilized community resources for patients unable to afford treatment. Charitable walks and runs, including the "Walk for India" campaigns, have raised awareness and funds for various causes while promoting community health and fitness. Partnerships with established international charities have multiplied the impact of locally raised funds, ensuring that contributions reach those most in need.</p>
+          
+          <p>The approach to humanitarian work emphasizes dignity and empowerment rather than mere charity. Programs connect job seekers with opportunities, provide skill-building workshops for those facing career transitions, and offer mental health resources for community members struggling with isolation or cultural adjustment. This holistic understanding of humanitarian need has made the organizations led by Praneeth trusted partners for both European institutions and Indian diplomatic missions seeking to support diaspora welfare.</p>
+        `,
+        achievements: [
+          'Built partnerships with 70+ charitable and humanitarian organizations',
+          'Coordinated COVID-19 relief including repatriation, supplies, and information services',
+          'Organized cancer fundraising events mobilizing community resources',
+          'Established "Walk for India" charitable campaigns for health and welfare causes',
+          'Developed mental health and wellness support programs for diaspora community',
+          'Created emergency assistance networks for community members facing crisis situations'
+        ]
+      }
+    };
+
+    function openHighlightsModal(type) {
+      const modal = document.getElementById('highlightsModal');
+      const data = highlightsData[type];
+      if (!data) return;
+
+      // Set badge
+      const badge = document.getElementById('modalBadge');
+      badge.className = 'highlights-modal-badge ' + data.badge;
+      badge.textContent = data.badgeText;
+
+      // Set title
+      document.getElementById('modalTitle').textContent = data.title;
+
+      // Set stats
+      const statsContainer = document.getElementById('modalStats');
+      statsContainer.innerHTML = data.stats.map(stat => `
+        <div class="stat-item">
+          <span class="stat-value">${stat.value}</span>
+          <span class="stat-label">${stat.label}</span>
+        </div>
+      `).join('');
+
+      // Set images
+      const mainImageContainer = document.getElementById('modalMainImage');
+      const thumbnailsContainer = document.getElementById('modalThumbnails');
+      
+      if (data.images && data.images.length > 0) {
+        // Set main image
+        mainImageContainer.innerHTML = `<img src="${data.images[0]}" alt="${data.title}" class="w-full h-full object-cover" onclick="openModalLightbox(0)">`;
+        
+        // Set thumbnails
+        thumbnailsContainer.innerHTML = data.images.map((img, index) => `
+          <div class="thumbnail-placeholder ${index === 0 ? 'active-thumb' : ''}" onclick="setModalMainImage(${index})">
+            <img src="${img}" alt="${data.title} ${index + 1}" class="w-full h-full object-cover rounded-lg">
+          </div>
+        `).join('');
+        
+        // Store current images for navigation
+        window.currentModalImages = data.images;
+        window.currentModalTitle = data.title;
+      } else {
+        // Show placeholders if no images
+        mainImageContainer.innerHTML = `
+          <div class="highlight-image-placeholder-modal">
+            <svg class="w-20 h-20 text-[var(--accent)]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+        `;
+        thumbnailsContainer.innerHTML = Array(4).fill().map(() => `
+          <div class="thumbnail-placeholder">
+            <svg class="w-6 h-6 text-[var(--accent)]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+        `).join('');
+      }
+
+      // Set content
+      document.getElementById('modalBody').innerHTML = data.content;
+
+      // Set achievements
+      const achievementsContainer = document.getElementById('modalAchievements');
+      achievementsContainer.innerHTML = `
+        <h4>Key Achievements</h4>
+        <ul>
+          ${data.achievements.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      `;
+
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHighlightsModal() {
+      const modal = document.getElementById('highlightsModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Set main image when thumbnail is clicked
+    function setModalMainImage(index) {
+      if (!window.currentModalImages || !window.currentModalImages[index]) return;
+      
+      const mainImageContainer = document.getElementById('modalMainImage');
+      mainImageContainer.innerHTML = `<img src="${window.currentModalImages[index]}" alt="${window.currentModalTitle}" class="w-full h-full object-cover cursor-pointer" onclick="openModalLightbox(${index})">`;
+      
+      // Update active thumbnail styling
+      const thumbnails = document.querySelectorAll('#modalThumbnails .thumbnail-placeholder');
+      thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active-thumb', i === index);
+      });
+    }
+
+    // Open lightbox from modal
+    function openModalLightbox(index) {
+      if (!window.currentModalImages) return;
+      
+      // Use the existing lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      
+      window.modalLightboxImages = window.currentModalImages;
+      window.modalLightboxIndex = index;
+      
+      lightboxImg.src = window.currentModalImages[index];
+      lightboxCaption.textContent = `${window.currentModalTitle} (${index + 1}/${window.currentModalImages.length})`;
+      lightbox.classList.add('active');
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeHighlightsModal();
+      }
+    });
+
     // ============================================
     // NAVIGATION
     // ============================================
@@ -2057,42 +3133,38 @@
       { src: '2013/INDIA SPORTS DAY/2.jpg', title: 'India Sports Day', year: '2013' },
       { src: '2013/INDIA SPORTS DAY/3.jpg', title: 'Cricket Action', year: '2013' },
       { src: '2013/INDIA SPORTS DAY/5.jpg', title: 'Community Spirit', year: '2013' },
-      { src: '2015/Namaste India/NamastheIndia.jpeg', title: 'Namaste India', year: '2015' },
-      { src: '2015/Namaste India/2.jpg', title: 'Classical Dance', year: '2015' },
-      { src: '2015/INDIAN SPORTS DAY/1.jpg', title: 'Indian Sports Day', year: '2015' },
-      { src: '2015/INDIAN SPORTS DAY/4.jpg', title: 'Sports Festival', year: '2015' },
-      { src: '2016/Independence Day Cup 2016/1.jpg', title: 'Independence Day Cup', year: '2016' },
-      { src: '2018/INDIA SPORTS DAY/IndiaSportsDay.jpeg', title: 'India Sports Day', year: '2018' },
-      { src: '2018/INDIA SPORTS DAY/AnnualSportsDay.jpeg', title: 'Annual Sports Day', year: '2018' },
-      { src: '2018/INDIA SPORTS DAY/1.jpg', title: 'Sports Celebration', year: '2018' },
-      { src: '2020/RD CUP/RDCup2020.jpeg', title: 'RD Cup Cricket', year: '2020' },
       { src: '2020/RD CUP/Badminton.jpeg', title: 'Badminton Tournament', year: '2020' },
-      { src: '2021/WALK FOR INDIA/WalkForIndia.jpg', title: 'Walk for India @75', year: '2021' },
-      { src: '2021/WALK FOR INDIA/WFI-1.jpg', title: 'Walking Challenge', year: '2021' },
-      { src: '2022/INDIA CUP/1. Event.jpeg', title: 'India Cup Event', year: '2022' },
-      { src: '2022/INDIA CUP/IDCTeams.jpeg', title: 'IDC Teams', year: '2022' },
       { src: '2022/Newbiescup/Newbiescup.jpg', title: 'Newbies Cup', year: '2022' },
-      { src: '2022/SUNRISERS MUNICH CUP - 2022/SunrisersCup.jpg', title: 'Sunrisers Cup', year: '2022' },
-      { src: '2023/BHARAT CUP/BharatCup1.jpg', title: 'Bharat Cup', year: '2023' },
-      { src: '2023/BHARAT CUP/BharatCupGroups.jpg', title: 'Bharat Cup Groups', year: '2023' },
-      { src: '2023/INDIA CUP/IndiaCup_2ndEd.jpg', title: 'India Cup 2nd Ed', year: '2023' },
-      { src: '2023/INDIA CUP/banner.jpg', title: 'India Cup Banner', year: '2023' },
       { src: '2023/PUNJABI MELA/PunjabiMela.jpg', title: 'Punjabi Mela', year: '2023' },
-      { src: '2024/SOUTH & EAST COAST INDIAN FOOD FESTIVAL/FoodFestival.jpg', title: 'Food Festival', year: '2024' },
-      { src: '2024/RD CUP/RDCupGames.jpg', title: 'RD Cup Games', year: '2024' },
       { src: '2024/RD CUP/RDCupVolleyball.jpg', title: 'Beach Volleyball', year: '2024' },
-      { src: '2024/BHARAT CUP/BharatCupGroup.jpg', title: 'Bharat Cup Group', year: '2024' },
       { src: '2024/INDIA CUP/IDC1.jpg', title: 'India Cup 3rd Ed', year: '2024' },
       { src: '2024/INDIA CUP/IDCTeam.jpg', title: 'IDC Team Photo', year: '2024' },
-      { src: '2024/BAVARIA CUP/BavariaCup.jpg', title: 'Bavaria Cup', year: '2024' },
       { src: '2025/LOHRI/FOT-2025.jpg', title: 'Festival of Togetherness', year: '2025' },
       { src: '2025/LOHRI/CGI.jpeg', title: 'CGI Munich', year: '2025' },
       { src: '2025/Vikasit Bharat RUN/VikasitBharatRun.jpg', title: 'Viksit Bharat Run', year: '2025' },
       { src: '2025/Vikasit Bharat RUN/VikasitBharatGroup.jpg', title: 'Viksit Bharat Group', year: '2025' },
       { src: '2025/INDIA FOOTBALL CENTER/IndiaFootballCenter.jpg', title: 'India Football Centre', year: '2025' },
-      { src: '2025/BPL/BPL1.jpg', title: 'Bavarian Premier League', year: '2025' },
       { src: '2025/RD Cup/VolleyballRDCup.jpg', title: 'RD Cup Volleyball', year: '2025' },
-      { src: '2026/LOHRI/VK-2026-All-Veriens.jpg', title: '45+ Vereine United', year: '2026' }
+      { src: 'celebrities/1.png', title: 'India Football Center', year: '2025' },
+      { src: 'celebrities/2.png', title: 'India Football Center', year: '2025' },
+      { src: 'celebrities/3.png', title: 'India Football Center', year: '2025' },
+      { src: 'celebrities/4.png', title: 'G20 Summit - World Economic Forum', year: '2025' },
+      { src: 'celebrities/6.png', title: 'Film Stars & Celebrities', year: '2025' },
+      { src: 'celebrities/7.jpeg', title: 'Leaders and Influencers', year: '2015' },
+      { src: 'celebrities/8.png', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/9.jpeg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/10.jpeg', title: 'Leaders and Influencers', year: '2015' },
+      { src: 'celebrities/11.jpeg', title: 'Leaders and Influencers', year: '2015' },
+      { src: 'celebrities/12.jpeg', title: 'Leaders and Influencers', year: '2015' },
+      { src: 'celebrities/13.jpeg', title: 'Leaders and Influencers', year: '2015' },
+      { src: 'celebrities/14.jpg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/15.jpg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/16.png', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/17.jpeg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/18.jpeg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/19.jpeg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/20.jpeg', title: 'Leaders and Influencers', year: '2025' },
+      { src: 'celebrities/21.jpeg', title: 'Leaders and Influencers', year: '2025' },
     ];
 
     function buildFilmStrip() {
@@ -2141,12 +3213,124 @@
     }
 
     // ============================================
+    // HIGHLIGHTS SIDEBAR PANEL FUNCTIONS
+    // ============================================
+    function loadHighlightContent(type) {
+      const data = highlightsData[type];
+      if (!data) return;
+
+      const contentArea = document.getElementById('highlights-content-area');
+      
+      // Build images gallery HTML
+      let imagesHtml = '';
+      if (data.images && data.images.length > 0) {
+        imagesHtml = `
+          <div class="highlight-image-gallery">
+            ${data.images.map((img, index) => `
+              <img src="${img}" alt="${data.title}" class="highlight-gallery-img" onclick="openImageLightbox('${img}', '${data.title}')">
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Build stats HTML
+      const statsHtml = data.stats.map(stat => `
+        <div class="highlight-stat-card">
+          <div class="text-2xl font-display font-bold text-[var(--accent)]">${stat.value}</div>
+          <div class="text-xs text-[var(--muted)] uppercase tracking-wider mt-1">${stat.label}</div>
+        </div>
+      `).join('');
+
+      // Build achievements HTML
+      const achievementsHtml = data.achievements.map(achievement => `
+        <div class="highlight-achievement-item">
+          <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-[var(--muted)] text-sm">${achievement}</span>
+        </div>
+      `).join('');
+
+      // Construct full content HTML
+      contentArea.innerHTML = `
+        <div class="highlight-content-header">
+          <span class="inline-block px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] text-xs font-bold uppercase tracking-wider rounded-full mb-4">${data.badgeText}</span>
+          <h3 class="font-display text-3xl font-semibold text-white mb-2">${data.title}</h3>
+          <div class="grid grid-cols-3 gap-4 mt-6">
+            ${statsHtml}
+          </div>
+        </div>
+
+        ${imagesHtml}
+
+        <div class="highlight-content-body mt-6 text-[var(--muted)]">
+          ${data.content}
+        </div>
+
+        <div class="mt-8">
+          <h4 class="font-display text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+            Key Achievements
+          </h4>
+          <div class="space-y-1">
+            ${achievementsHtml}
+          </div>
+        </div>
+      `;
+
+      // Scroll content area to top
+      document.querySelector('.highlights-content-panel').scrollTop = 0;
+    }
+
+    function initHighlightsSidebar() {
+      const menuItems = document.querySelectorAll('.highlights-menu-item');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Remove active class from all items
+          menuItems.forEach(mi => mi.classList.remove('active'));
+          
+          // Add active class to clicked item
+          this.classList.add('active');
+          
+          // Load the content
+          const highlightType = this.getAttribute('data-highlight');
+          loadHighlightContent(highlightType);
+        });
+      });
+
+      // Load first item by default
+      loadHighlightContent('indoeuropean');
+    }
+
+    function openImageLightbox(imageSrc, title) {
+      // Create lightbox overlay
+      const lightbox = document.createElement('div');
+      lightbox.className = 'fixed inset-0 z-[20000] flex items-center justify-center bg-black/90 backdrop-blur-sm';
+      lightbox.onclick = () => lightbox.remove();
+      
+      lightbox.innerHTML = `
+        <div class="relative max-w-5xl max-h-[90vh] p-4">
+          <button class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-[var(--card)] border border-[var(--border)] flex items-center justify-center text-white hover:bg-[var(--accent)] hover:text-black transition-colors z-10" onclick="this.closest('.fixed').remove(); event.stopPropagation();">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+          <img src="${imageSrc}" alt="${title}" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl">
+        </div>
+      `;
+      
+      document.body.appendChild(lightbox);
+    }
+
+    // ============================================
     // INITIALIZE
     // ============================================
     window.addEventListener('DOMContentLoaded', function() {
       buildFilmStrip();
       renderTimeline();
       initScrollAnimations();
+      initHighlightsSidebar();
     });
   </script>
 </body>
